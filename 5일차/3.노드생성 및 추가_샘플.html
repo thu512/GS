@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <style>
+    body {
+      font-size: 9pt;
+      font-family: "굴림";
+    }
+
+    div,
+    p,
+    ul,
+    li {
+      border: 1px #eeeeee solid;
+      margin: 10px;
+    }
+
+    ul {
+      padding: 10px;
+    }
+
+    li.select {
+      background-color: #ccc;
+    }
+  </style>
+
+  <script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var $txt = $('#txt');
+
+      //var cnt=0;
+      $('#btnAdd').click(function () {
+        // cnt++;
+        // var $li = $('<li>new menu '+cnt+'</li>');
+        // //부모가 자식을 첫번째에 추가
+        // //$('ul.menu').prepend($li);
+        // //자식이 부모를 prependTo
+        // //append 마지막에 추가
+
+        // //신규 노드 생성
+        // //$('<li>new menu '+cnt+'</li>').insertBefore("ul.menu li.select")
+        // $('<li>new menu '+cnt+'</li>').insertAfter("ul.menu li.select")
+        // //$('<li>new menu '+cnt+'</li>').before("ul.menu li.select");
+
+        // console.log($li.get(0));
+        // console.log($li.eq(0).text());
+        var $newItem = $('<li>' + $txt.val() + '</li>')
+        $('ul.menu').append($newItem);
+        $txt.val('');
+        $txt.focus();
+      });
+
+      var $curtLi = null;
+      //라이브 이벤트
+      $('ul.menu').on('click', 'li', function () {
+        if ($curtLi != null) {
+          $curtLi.removeClass('select');
+        }
+        $curtLi = $(this);
+        $curtLi.addClass('select');
+        $txt.val($curtLi.text());
+      })
+
+      $('#btnMod').on('click', function () {
+        if ($curtLi != null) {
+          $curtLi.text($txt.val());
+        } else {
+          alert('선택해주세요');
+        }
+
+      })
+
+      $('#btnRemove').on('click', function () {
+        if ($curtLi != null) {
+          $curtLi.remove();
+          $txt.val('');
+          $curtLi = null;
+        } else {
+          alert('선택해주세요');
+
+        }
+      })
+
+      $('#btnUp').on('click', function () {
+        if ($curtLi.index() > 0) {
+          var $newItem = $('<li>' + $curtLi.text() + '</li>');
+          $newItem.insertBefore($curtLi.prev()).addClass('select');
+          $curtLi.remove();
+          $curtLi = $newItem;
+        }
+
+      })
+
+      $('#btnDown').on('click', function () {
+        if ($('ul.menu').children().length - 1 > $curtLi.index()) {
+          var $newItem = $('<li>' + $curtLi.text() + '</li>');
+          $newItem.insertAfter($curtLi.next()).addClass('select');
+          $curtLi.remove();
+          $curtLi = $newItem;
+        }
+
+      })
+
+    });
+
+  </script>
+</head>
+
+<body>
+  <input type="text" id="txt">
+  <button id="btnAdd">추가</button>
+  <button id="btnMod">수정</button>
+  <button id="btnRemove">삭제</button>
+  <button id="btnUp">up</button>
+  <button id="btnDown">Down</button>
+
+
+  <ul class="menu">
+    <li>menu1</li>
+    <li>menu2</li>
+    <li class="select">menu3</li>
+    <li>menu4</li>
+    <li>menu5</li>
+    <li>menu6</li>
+  </ul>
+</body>
+
+</html>
