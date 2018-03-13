@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+
+    <style>
+        .tab-menu {
+            list-style: none;
+            height: 80px;
+        }
+
+        .tab-menu li {
+            width: 99px;
+            height: 40px;
+            background-position-y: 0;
+            text-indent: -1000px;
+            overflow: hidden;
+            display: inline-block;
+            float: left;
+        }
+
+        .tab-menu li:hover {
+            background-position-y: -40px;
+        }
+
+        .tab-menu li.select {
+            background-position-y: -80px;
+            height: 80px;
+        }
+
+        .tab-menu li.menuitem1 {
+            background-image: url(../images/newbtn.bar.1.png);
+        }
+
+        .tab-menu li.menuitem2 {
+            background-image: url(../images/newbtn.bar.2.png);
+        }
+
+        .tab-menu li.menuitem3 {
+            background-image: url(../images/newbtn.bar.3.png);
+        }
+
+        .tab-menu li.menuitem4 {
+            background-image: url(../images/newbtn.bar.4.png);
+        }
+
+        .tab-menu li.menuitem5 {
+            background-image: url(../images/newbtn.bar.5.png);
+        }
+
+        .tab-menu li.menuitem6 {
+            background-image: url(../images/newbtn.bar.6.png);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+
+    <script>
+        $(document).ready(function () {
+          var $tab = $('#tabMenu1');
+          console.log('1.탭매뉴 아이템 개수: '+$tab.children().length);
+          $tab.children().on('click',function(){
+            console.log('클릭된 버튼의 인덱스: '+$(this).index());
+          });
+
+          var i=0;
+          var id = setInterval(function(){
+            if(i>=6){
+              i=0;
+              $tab.children().removeClass('select');
+              clearInterval(id);
+            }else{
+              $tab.children().removeClass('select');
+              $tab.children().eq(i).addClass('select');
+              i++;
+            }
+          },1000);
+        });
+    </script>
+
+</head>
+
+<body>
+    <ul class="tab-menu" id="tabMenu1">
+        <li class="menuitem1">
+            google
+        </li>
+        <li class="menuitem2">
+            facebook
+        </li>
+        <li class="menuitem3">
+            pinterest
+        </li>
+        <li class="menuitem4">
+            twitter
+        </li>
+        <li class="menuitem5">
+            airbnb
+        </li>
+        <li class="menuitem6">
+            path
+        </li>
+    </ul>
+</body>
+
+</html>

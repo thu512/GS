@@ -9,7 +9,6 @@
       font-size: 9pt;
       font-family: "굴림";
     }
-
     div,
     p,
     ul,
@@ -37,24 +36,42 @@
       // console.log($('div').get(2));
       // console.log($('div')[2]);
 
-      // $('div').each(function () {
-      //   console.log(this);
-      // });
+      $('div').each(function () {
+        console.log(this);
+      });
       
       var $div = $('div');
-      console.log($div.filter('[class*=content]'));
-      console.log($div.find('[class=menu]'));
-      console.log($div.index($('#header')));
+      // console.log($div.filter('[class*=content]'));
+      // console.log($div.find('[class=menu]'));
+      // console.log($div.index($('#header')));
       
       // var $menu = $('ul.menu');
-      // 첫번째 div만
+      // 첫번째 div의 첫번째 자식
       // $menu.children(':first').css("border","4px solid red");
       // $menu.children(':last').css("border","4px solid red");
       
-      // 모든 DIV의 첫번째 자식
+      // 모든 DIV의 자식들 중에 첫번째 자식
       $div.find(':first').css('border','4px solid red');
       $div.find(':last').css('border','4px solid red');
       
+      // 부모 $div.parent();
+      // 부모들 전부 $div.parents();
+      // 이전 형재 $div.prev();
+      // 이전 형재 전부 $div.prevAll();
+      // 다음 형재 $div.next();
+      // 다음형재 전부 $div.nextAll();
+
+      console.log($('ul.menu > li').parent());
+      console.log($('ul.menu > li').parents('#content'));
+      console.log($('ul.menu > li').eq(0));
+      console.log($('ul.menu > li').eq(2).prev());
+      console.log($('ul.menu > li').eq(2).prevAll());
+      console.log($('ul.menu > li').eq(2).nextAll());
+      console.log($('ul.menu > li').eq(2).nextAll('.test2'));
+      
+      
+      
+
     });
   </script>
 </head>
@@ -73,6 +90,7 @@
         <li class="select">tag로 찾기(li, class=select)</li>
         <li data-value="2">class로 찾기(li, data-value=2)</li>
         <li class="test1">속성으로 찾기(li, class=test1)</li>
+        <li class="test2">속성으로 찾기(li, class=test1)</li>
       </ul>
       <div class="content-data">
         자식 노드 찾기(div, class=content-data)
