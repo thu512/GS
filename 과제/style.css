@@ -1,0 +1,98 @@
+*{
+	margin: 0; padding: 0;
+	font-family: '맑은고딕', 'Malgun Gothic', Gothic, sans-serif;
+}
+body{
+	width: 960px; margin: 0 auto;
+	background-color: #E6E6E6;
+}
+a{
+	text-decoration: none;
+}
+#page-wrapper{
+	background-color: white;
+	margin: 200px 0; padding: 10px 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 6px rgba(100,100,100,0.3);
+}
+#title{
+	text-align: center;
+	margin: 20px 0;
+}
+.button{
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	border-radius: 10px 10px 10px 10px;
+}
+.button:hover{
+	background-color: black;
+	color: white;
+}
+.right{
+	float: left;
+}
+#main-header{
+	padding: 10px 0;
+}
+#msg{
+	float:right;
+	margin-top: 20px;
+}
+#content{
+	overflow: hidden;
+	border-radius: 5px;
+	border-top: 1px solid green;
+	border-bottom: 1px solid green;
+}
+#main-section{
+	padding: 10px;
+	border-right: 1px solid green;
+	float: right;
+	width: 710px;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+}
+#main-section img{
+	margin-top: 20px;
+}
+
+#main-aside{
+	float: left;
+}
+#menu{
+	width: 150px;
+	height: 420px;
+	border-left: 1px solid green;
+	border-right: 1px solid green;
+}
+#menu li:first-child{
+	border-top: 0px solid green;
+}
+#menu li{
+	line-height: 50px;
+	border-bottom: 1px solid green;
+}
+#menu li a{
+	color: green;
+	display: block;
+}
+#menu li a:hover{
+	background-color: pink;
+}
+#board{
+	border: 1px  green;
+	border-collapse: collapse;
+	border-radius: 5px 5px 5px 5px;
+	width: 680px;
+	text-align: center;
+	line-height: 30px;
+}
+#board td{
+	padding: 5px;
+}
+#footer{
+	text-align: center;
+	margin-top: 10px;
+}

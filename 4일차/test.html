@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript">
+    var name='이창주';
+    var age='26';
+    var addr='thu512@gsitm.com';
+    var phone='010-5120-4002';
+    var isMarry=false;
+    console.log(name+', '+age+', '+addr+', '+phone+', '+isMarry);
+    // alert(name+', '+age+', '+addr+', '+phone+', '+isMarry);
+
+    var array=[123,'23231',232,'dsfsge',new Date()];
+    console.log(array);
+    array[2]=true;
+
+    var glovVar='test';
+
+    function test(){
+      console.log(glovVar);
+      var test2 = 'test2';
+    }
+
+    console.log(glovVar);
+
+    var aa=10;
+    console.log(aa++);//10, 11
+    console.log(++aa);//12
+    console.log(aa--);//12, 11
+    console.log(--aa);//10
+    
+    function Cal(){
+      this.add = function(a,b){
+        // alert(a+b);
+        console.log(''+(a+b));
+      }
+      this.sub = function(a,b){
+        console.log(a-b);
+      }
+      this.mul = function(a,b){
+        console.log(a*b);
+      }
+      this.div = function(a,b){
+        console.log(a/b);
+      }
+    }
+    var c = new Cal();
+    c.add(1,2);
+    c.sub(213,3245235);
+    c.mul(213,435);
+    c.div(3214,436);
+    
+    var num=123.465;
+    console.log(parseInt(num));
+    console.log(parseFloat(num));
+    console.log(Number(num));
+    
+    // // var value=window.prompt('로또번호를 입력하세요.');
+    // if(value==99){
+    //   alert('축당첨');
+    // }else{
+    //   alert('꽝');
+    // }
+    for (var i = 1; i <= 5; i++) {
+    	for (var j = 1; j <= i; j++) {
+    		document.write('*');
+    	}
+    	document.write('<br>');
+    }
+    
+    for (var i = 5; i >= 1; i--) {
+    	for (var j = 1; j <= i; j++) {
+    		document.write('*');
+    	}
+    	document.write('<br>');
+    }
+
+		for (var i = 1; i <= 9; i++) {
+    	for (var j = 1; j <= 9; j++) {
+    		document.write(i+'*'+j+'='+(i*j));
+    		document.write('<br>');
+    	}
+    	document.write('<br>');
+    }
+
+    var aray=[10,20,30,40,50];
+    var sum=0;
+    for (var j = 0; j < aray.length; j++) {
+    		document.write(aray[j]);
+    		if(j != aray.length-1){
+    			document.write('+');
+    		}
+    		
+    		if(j == aray.length-1){
+    			document.write('=');
+    		}
+    		sum+=aray[j];
+    }
+    document.write(sum);
+		document.write('<br>');
+		var sum=0;
+    for (var j = 0; j <= 100; j++) {
+    		sum+=j;
+    }
+    document.write(sum);
+		document.write('<br>');
+    var dan=3;
+    var i=1;
+    while(i<=9){
+    	document.write(dan+"*"+i+"="+(dan*i)+"<br>");
+    	i++;
+    }
+
+    document.write('<br>');
+    var i=1;
+    while(true){
+    	var value=window.prompt(i+'번째입력');
+    	if(value == 'end'){
+    		break;
+    	}
+    	i++;
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

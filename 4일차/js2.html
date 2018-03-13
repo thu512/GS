@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+	
+	<script type="text/javascript">
+		function addCount(){
+			var cnt=0;
+			cnt++;
+			return cnt;
+		}
+
+		document.write(addCount());
+		document.write(addCount());
+		document.write(addCount());
+
+
+
+		function createCounter(){
+			var cnt=0;
+			function addCount(){
+				cnt++;
+				return cnt;
+			}
+			return addCount;
+		}
+
+		// createCounter는 addCounter를 리턴
+		// var cnt=0;가 생성되지 않고 cnt++; 만 이루어짐
+		var counter=createCounter();
+		document.write(counter());
+		document.write(counter());
+		document.write(counter());
+
+
+		var count=0;
+		// setInterval은 아이디가 리턴값임
+		var sid = setInterval(function(){
+			count++;
+			console.log(count);
+		},1000);
+
+		console.log(sid);
+
+		$(document).ready(function(){
+			$('#b').on('click',function(){
+				clearInterval(sid);
+			});
+		});
+
+		var value = parseInt(Math.random()*50)+50;
+		var flag = new Array(51);
+		for(var i=1; i<flag.length; i++){
+				flag[i]=false;
+			}
+		function check(){
+			for(var i=1; i<flag.length; i++){
+				if(!flag[i]){
+					return false;
+				}
+			}
+			return true;
+		}
+		while(!check()){
+			var value = parseInt(Math.random()*50)+1;
+			if(flag[value]==false){
+				flag[value]=true;
+				document.write(value+'<br>');
+			}
+		}
+		for(var i=0; i<50; i++){
+			
+			
+		}
+		
+		var val = window.prompt();
+		var i=0;
+		setInterval(function(){
+			console.log(val.charAt(i));
+			if(i+1>=val.length){
+				i=0;
+			}else{
+				i++;
+			}
+		},1000);
+	</script>
+</head>
+<body>
+	<button id="b">멈춤</button>
+</body>
+</html>

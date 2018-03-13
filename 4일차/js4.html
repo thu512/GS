@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		// 엄격 모드
+		'use strict';
+
+		var Day=['일','월','화','수','목','금','토'];
+		
+		setInterval(function(){
+			var date = new Date();
+			var h=date.getHours();
+			var m=date.getMinutes();
+			var s=date.getSeconds();
+			var ms=date.getMilliseconds();
+			var y=date.getFullYear();
+			var M=date.getMonth()+1;
+			var d=date.getDate();
+			var D=date.getDay();
+			document.getElementById('timer').innerHTML=y+'년 '+M+'월 '+d+'일 '+Day[D]+'요일 '+h+'시 '+m+'분 '+s+'초 '+ms;
+		},1000);
+
+		//배열을 문자열로
+		var aryStr=Day.join('-');
+		//문자열을 배열로
+		var aryStr=aryStr.split('-');
+
+		aryStr.push('놀');
+		aryStr.unshift('갑');
+		//start, 0=삽입, 1=대치, 그 이후=START부터 그수만큼 지우고 삽입
+		aryStr.splice(2,0,'갱');
+		// 첫번째 삭제
+		aryStr.shift();
+		// 마지막 삭제
+		aryStr.pop();
+		//일부 삭제
+		aryStr.splice(1,0);
+
+		aryStr.indexOf('금');
+
+		aryStr.sort();
+		//내림차순
+		aryStr.sort(function(a,b){
+			return b>a;
+		});
+
+		//숫자 정렬
+		aryStr.sort(function(a,b){
+			return a-b;
+		});
+		console.log(aryStr);
+	</script>
+</head>
+<body>
+	<div id="timer"></div>
+</body>
+</html>

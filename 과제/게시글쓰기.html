@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>게시글 쓰기</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		#board-content{
+			width: 580px;
+			height: 200px;
+			margin-top: 5px;
+		}
+		#board-title{
+			width: 580px;
+			height: 20px;
+		}
+		#pwd{
+			width: 250px;
+			height: 20px;
+		}
+		#button-section{
+			width: 678px;
+			height: 20px;
+		}
+		#btn{
+			float: right;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="page-wrapper">
+		<!-- header -->
+		<div id="main-header">
+			<img src="http://www.gsitm.com/sites/default/files/logo_0.gif">
+			<span id="msg">이창주님 환영합니다.</span>
+		</div>
+		<!-- content -->
+		<div id="content">
+			<!-- main-aside -->
+			<div id="main-aside">
+				<ul id="menu">
+					<li><a href="나의회원정보.html">&nbsp;회원정보</a></li>
+					<li><a href="게시판목록.html">&nbsp;게시판</a></li>
+					<li><a href="게시글보기.html">&nbsp;게시글 보기</a></li>
+					<li><a href="게시글쓰기.html">&nbsp;게시글 쓰기</a></li>
+				</ul>
+			</div>
+			<!-- main-section -->
+			<div id="main-section">
+				<form>
+					<div id="board-section">
+						<table id="board" border="1">
+							<tr>
+								<td><label for="board-title">제목</label></td>
+								<td colspan="3"><input type="text" id="board-title"></td>
+							</tr>
+							<tr>
+								<td><label for="open">공개여부</label></td>
+								<td>
+									<input type="radio" name="open" id="open" value="1"> 공개&nbsp;
+									<input type="radio" name="open" id="open" value="0"> &nbsp;비공개
+								</td>
+								<td><label for="pwd">비밀번호</label></td>
+								<td><input type="password" id="pwd"></td>
+							</tr>
+							<tr>
+								<td><label for="board-content">내용</label></td>
+								<td colspan="3"><textarea id="board-content"></textarea></td>
+							</tr>
+						</table>
+					</div>
+					<div id="button-section">
+						<div id="btn">
+							<input type="submit" id="submit" value="게시">
+							<input type="reset" id="reset" value="취소">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- footer -->
+		<div id="footer">
+			<a href="#">Create by ChangJoo-Lee</a>
+		</div>
+	</div>
+</body>
+</html>

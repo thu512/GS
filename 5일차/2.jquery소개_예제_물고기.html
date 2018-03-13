@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+  body {
+    font-size: 9pt;
+    
+  }
+  #panel {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #999;
+    position: relative;
+  }
+
+  #bar {
+    position: absolute;
+    left: 50px;
+    top: 190px;
+    width: 500px;
+    height: 20px;
+    background: #F30;
+  }
+
+  #fish {
+    position: absolute;
+    left: 50px;
+    top: 120px;
+  }
+
+  #nav {
+    text-align: center;
+    width: 600px;
+  }
+</style>
+        <!--
+        예제 3. 버튼을 클릭하면 물고기를 왼쪽에서 오른쪽으로 움직여 주세요.
+      -->
+
+      <script>
+        window.onload = function(){
+          console.log('onload');
+        };
+
+        $(document).ready(function(){
+            // var fish=document.getElementById("fish");
+            // var btnStart=document.getElementById("btnStart");
+            // var left=50;
+            // var timerID=0;
+            // btnStart.addEventListener('click',function(){
+            //   timerID = setInterval(function(){
+            //     left++;
+            //     fish.style.left = left+"px";
+            //     if(left>=430){
+            //       clearInterval(timerID);
+            //       timerID=0;
+            //     }
+            //   },20);
+            // },false);
+            console.log('ready');
+            var $fish = $('#fish');
+            console.log($fish);
+            $('#btnStart').click(function(){
+              $fish.animate({
+                left : 430
+              },1000);
+            })
+          });
+        
+        </script>
+      </head>
+
+      <body>
+        <div>
+          <div id="panel">
+            <div id="bar"></div>
+            <img src="fish1.png" id="fish">
+          </div>
+          <div id="nav">
+            <button id="btnStart">
+              클릭하면 물고기가 움직여요.
+            </button>
+          </div>
+        </div>
+      </body>
+      </html>

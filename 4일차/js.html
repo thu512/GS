@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function printStar(num){
+			 for (var i = 1; i <= num; i++) {
+	    	for (var j = 1; j <= i; j++) {
+	    		document.write('*');
+	    	}
+	    	document.write('<br>');
+	    }  
+		}
+
+		printStar(1);
+
+		var a=10;
+		var b=100;
+		function func1(){
+			var b =20;
+			document.write("1. a = "+a+"<br>");
+			document.write("2. b = "+b+"<br>");
+			a = 50;
+		}
+		func1();
+
+		document.write("3. a = "+a+"<br>");
+		document.write("4. b = "+b+"<br>");
+
+		function func2(){
+			console.log(arguments);
+			document.write('name = '+ arguments[0] + '<br>');
+			document.write('name = '+ arguments[1] + '<br>');
+				
+		}
+
+		func2('sda',1);
+
+		function print99dan(num){
+	    for (var j = 1; j <= 9; j++) {
+	    	document.write(num+'*'+j+'='+(num*j));
+	    	document.write('<br>');
+	    }
+	    document.write('<br>');
+		}
+
+		print99dan(2);
+
+
+		function calculator(oper, a, b){
+			switch(oper){
+				case '+':
+					document.write(a+'+'+b+'='+(a+b) + '<br>');
+					break;
+				case '-':
+					document.write(a+'-'+b+'='+(a-b) + '<br>');
+					break;
+				case '*':
+					document.write(a+'*'+b+'='+(a*b) + '<br>');
+					break;
+				case '/':
+					document.write(a+'/'+b+'='+(a/b) + '<br>');
+					break;
+				case '%':
+					document.write(a+'%'+b+'='+(a%b) + '<br>');
+					break;
+			}
+		}
+		calculator('*',3,4);
+		calculator('%',3,4);
+		calculator('/',3,4);
+		calculator('+',3,4);
+		calculator('-',3,4);
+
+
+		function even(num){
+			document.write(num+'은 ');
+			if(num%2 == 0){
+				document.write('짝수입니다.<br>');
+			}
+			else{
+				document.write('홀수입니다.<br>');
+			}
+		}
+
+		even(10);
+
+		function cal(oper, a, b, callback){
+			var result='';
+			switch(oper){
+				case '+':
+					result = (a+b);
+					break;
+				case '-':
+					result = (a-b);
+					break;
+				case '*':
+					result = (a*b);
+					break;
+				case '/':
+					result = (a/b);
+					break;
+				case '%':
+					result = (a%b);
+					break;
+				default:
+					result = '잘못입력하셧습니다.';
+			}
+			callback(result);
+		}
+
+		function print1(result){
+			document.write('정답은'+result+'입니다.<br>');
+		}
+
+		cal('*',34,36,print1);
+
+		(function(name){
+			document.write(name+'<br>');
+		})('dlckdwn');
+
+
+		setInterval(function(){
+			document.write('10<br>');
+		},3000);
+		document.write('12<br>');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

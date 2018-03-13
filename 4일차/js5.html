@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function getMonthName(mo){
+			mo=mo-1;
+			var month=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+			if(month[mo]!=null){
+				return month[mo];
+			}else{
+				throw "invaildMonthNo";
+			}
+		}
+		try{
+			getMonthName(-1);
+		}catch(e){
+			console.log(e);
+		}finally{
+			console.log('end');
+		}
+
+
+		var jsons=
+		{
+			"first": "Lane",
+			"last": "Porter",
+			"married": true,
+			"born": 1890,
+			"friends": ["Trazan", "Cheeta"]
+		};
+
+		function replacer(key, value){
+			if(typeof value === 'number'){
+				value = 2*value;
+
+			}
+			return value;
+		}
+		console.log(jsons);
+		console.log(JSON.stringify(jsons));
+		JSON.parse(JSON.stringify(jsons));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

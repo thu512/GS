@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>게시글 보가</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		#board-content{
+			width: 600px;
+			height: 200px;
+			margin-top: 5px;
+		}
+		#board-title{
+			width: 600px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="page-wrapper">
+		<!-- header -->
+		<div id="main-header">
+			<img src="http://www.gsitm.com/sites/default/files/logo_0.gif">
+			<span id="msg">이창주님 환영합니다.</span>
+		</div>
+		<!-- content -->
+		<div id="content">
+			<!-- main-aside -->
+			<div id="main-aside">
+				<ul id="menu">
+					<li><a href="나의회원정보.html">&nbsp;회원정보</a></li>
+					<li><a href="게시판목록.html">&nbsp;게시판</a></li>
+					<li><a href="게시글보기.html">&nbsp;게시글 보기</a></li>
+					<li><a href="게시글쓰기.html">&nbsp;게시글 쓰기</a></li>
+				</ul>
+			</div>
+			<!-- main-section -->
+			<div id="main-section">
+				<div id="board-section">
+					<table id="board" border="1">
+						<tr>
+							<td><label for="board-title">제목</label></td>
+							<td colspan="3"><input type="text" id="board-title" disabled="disabled" value="What is Lorem Ipsum?"></td>
+						</tr>
+						<tr>
+							<td><label for="board-content">내용</label></td>
+							<td colspan="3">
+								<textarea id="board-content" disabled="disabled">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<div id="footer">
+			<a href="#">Create by ChangJoo-Lee</a>
+		</div>
+	</div>
+</body>
+</html>

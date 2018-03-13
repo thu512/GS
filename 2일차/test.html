@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			font-size: 11px;
+			font-family: '돋움', '명조체', '고딕체';
+			font-style: inherit;
+			font-weight: 900;
+			line-height: 30px;
+			text-decoration: underline;
+		}
+		ul{
+			/*font-size: 14px;*/
+			/*100%는 원래 크기*/
+			font-size: 100%;
+		}
+		li:first-child{
+			/*em은 기존 픽셀에 배수 14px * 1.0 */
+			font-size: 0.1em;
+		}
+		li:nth-child(2n){
+			font-size: 2em;
+		}
+		div{
+			border: 5px solid red;
+			border-style: double;
+			width: 100px;
+			height: 100px;
+			background-color: #e1c4f5;
+			padding: 30px; 
+			margin: 20px;
+			display: inline-block;
+			/*float: left;*/
+			background-image: url(http://cfs11.tistory.com/image/33/tistory/2009/02/26/22/41/49a69bf854e7c);
+			background-size: cover;
+		}
+		body{
+			background-image: url('http://cfs11.tistory.com/image/33/tistory/2009/02/26/22/41/49a69bf854e7c');
+			background-size: 30%;
+			background-repeat: scroll;
+			background-position: bottom;
+		}
+	</style>
+</head>
+<body>
+	<div>GSITM</div>
+	<div>인턴</div>
+	<span>!!!</span>
+	<ul>
+		<li><a href="#">first</a></li>
+		<li>second</li>
+		<li>three</li>
+		<li>four</li>
+	</ul>
+</body>
+</html>

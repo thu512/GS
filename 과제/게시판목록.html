@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>게시판 목록</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		#head td:nth-child(1){
+			width: 30px;
+		}
+		#head td:nth-child(2){
+
+			width: 200px;
+		}
+		#head td:nth-child(3){
+			width: 50px;
+		}
+		#head td:nth-child(4){
+			width: 50px;
+		}
+		#board tr:nth-child(2n){
+			background-color: #D5D5D5; 
+		}
+		#board a{
+			margin: 0 auto;
+			display: block;
+			width: 300px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: black;
+		}
+		#main-section a:hover{
+			color: blue;
+		}
+		#index{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: auto;
+			display: inline-block;
+			float: left;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -120px;
+			margin-top: -9px;
+		}
+		#index li{
+			width: 30px;
+			display: inline;
+			float: left;
+		}
+		#index-section{
+			width: 680px;
+			height: 50px;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="page-wrapper">
+		<!-- header -->
+		<div id="main-header">
+			<img src="http://www.gsitm.com/sites/default/files/logo_0.gif">
+			<span id="msg">이창주님 환영합니다.</span>
+		</div>
+		<!-- content -->
+		<div id="content">
+			<!-- main-aside -->
+			<div id="main-aside">
+				<ul id="menu">
+					<li><a href="나의회원정보.html">&nbsp;회원정보</a></li>
+					<li><a href="게시판목록.html">&nbsp;게시판</a></li>
+					<li><a href="게시글보기.html">&nbsp;게시글 보기</a></li>
+					<li><a href="게시글쓰기.html">&nbsp;게시글 쓰기</a></li>
+				</ul>
+			</div>
+			<!-- main-section -->
+			<div id="main-section">
+				<div id="board-section">
+					<table id="board" border="1">
+						<tr id="head">
+							<td>번호</td>
+							<td>제목</td>
+							<td>글쓴이</td>
+							<td>작성일</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><a href="#">What is Lorem Ipsum?</a></td>
+							<td>thu512</td>
+							<td>18.03.09 16:00</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><a href="#">Why do we use it?</a></td>
+							<td>thu512</td>
+							<td>18.03.09 16:00</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td><a href="#">Where does it come from?</a></td>
+							<td>thu512</td>
+							<td>18.03.09 16:00</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td><a href="#">Where can I get some?</a></td>
+							<td>thu512</td>
+							<td>18.03.09 16:00</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
+							<td>thu512</td>
+							<td>18.03.09 16:00</td>
+						</tr>
+					</table>
+				</div>
+				<div id="index-section">
+					<ul id="index">
+						<li><a href="#"><<</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">6</a></li>
+						<li><a href="#">>></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<div id="footer">
+			<a href="#">Create by ChangJoo-Lee</a>
+		</div>
+	</div>
+</body>
+</html>

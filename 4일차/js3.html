@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var str = window.prompt();
+
+		console.log(str);
+		function ltrim(str){
+			while((str.slice(0,1)==' ')){
+				str=str.slice(1,str.length);
+			}
+			return str;
+		}
+		str=ltrim(str);
+		console.log(str);
+		console.log(str.slice(str.length-1,str.length));
+		function rtrim(str){
+			while((str.slice(str.length-1,str.length)==' ')){
+				str=str.slice(0,str.length-1);
+			}
+			return str;
+		}
+		str=rtrim(str);
+		console.log(str);
+
+		function money(str){
+			var s='';
+			while(str.length>3){
+				s+=','+str.slice(str.length-3,str.length);
+				str=str.slice(0,str.length-3);
+			}
+			return str+s;
+		}
+		str=money(str);
+		console.log(str);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

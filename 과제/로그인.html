@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>로그인</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		#login-form > table{
+			text-align: center;
+			margin: 0 auto;
+			line-height: 50px;
+		}
+		a{
+			font-size: 10px;
+			display: block;
+			text-align: right;
+		}
+		a:hover{
+			color: blue;
+		}
+	</style>
+</head>
+<body style="width: 400px">
+	<div id="page-wrapper">
+		<div id="login-main">
+			<h1 id="title">HTML교육</h1>
+			<form id="login-form" action="나의회원정보.html">
+				<table>
+					<tr>
+						<td><label for="id">사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번:</label></td>
+						<td><input type="text" id="id"></td>
+					</tr>
+					<tr>
+						<td><label for="pwd">비밀번호:</label></td>
+						<td><input type="password" id="pwd"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" id="submit" value="로그인"></td>
+					</tr>
+				</table>
+			</form>
+			<a href="회원가입.html">회원가입</a>
+		</div>
+	</div>
+</body>
+</html>

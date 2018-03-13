@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>회원가입</title>
+	<!-- <link rel="stylesheet" type="text/css" href="test3.css"> -->
+	<style type="text/css">
+	/**{
+			color: red;
+			font-family: 굴림;
+		}
+	h1, p{
+			color: blue;
+			text-align: center;
+		}
+	#h2{
+		color: green;
+	}
+	.test3{
+		color: gray;
+	}*/
+	.t1{
+		color: blue;
+	}
+	.t1:hover{
+		color: red;
+		text-decoration: underline;
+	}
+	h1:active{
+		color: blue;
+	}
+	input:focus{
+		border: 5px solid red;
+	}
+	button:disabled{
+		border: 1px solid red;
+	}
+	button:enabled{
+		border: 1px solid green;
+	}
+
+	input[type="submit"]:hover{
+		color: red;
+		background-color: blue;
+	}
+
+	input[type="reset"]:hover{
+		color: blue;
+		background-color: red;
+	}
+
+	td > label{
+		color: blue;
+	}
+
+	body select:hover{
+		color: red;
+	}
+
+	table{
+		border: 5px solid gray;
+	}
+
+	/*구조 선택자*/
+	li:first-child{
+		background-color: red;
+	}
+	li:last-child{
+		background-color: blue;
+	}
+	li:nth-child(2n-1){
+		background-color: gray;
+	}
+	ul{
+		overflow: hidden;
+	}
+	li{
+		list-style: none;
+		float: left;
+		padding: 15px;
+
+	}
+	li:first-child{
+
+		border-radius: 10px 0 0 10px;
+	}
+	li:last-child{
+
+		border-radius: 0 10px 10px 0;
+	}
+	li:nth-child(2n){
+		background-color: red;
+	}
+	li:nth-child(2n-1){
+		background-color: green;
+	}
+	li:hover{
+		color: white;
+	}
+	li:first-child > a{
+		color: blue;
+	}
+	</style>
+</head>
+	<body>
+		<h1 class="t1">회원가입</h1>
+		<!-- <p class="t2">Why do we use it?</p>
+		<h1 class="t1">회원가입</h1>
+		<p class="t4">Why do we use it?</p>
+		<button disabled="disabled">저장</button>
+		<button >저장</button> -->
+		<form>
+			<table border="5px">
+				<tr>
+					<td><label for="img">개인사진</label></td>
+					<td><input type="image" src="https://www.iloveimg.com/images/home.jpg" width="100px" height="100px" name="img" id="img"></td>
+				</tr>
+				<tr>
+					<td><label for="ID">아이디</label></td>
+					<td><input type="text" name="ID" id="ID"></td>
+				</tr>
+				<tr>
+					<td><label for="pwd">비밀번호</label></td>
+					<td><input type="password" name="pwd" id="pwd"></td>
+				</tr>
+				<tr>
+					<td><label for="email">이메일</label></td>
+					<td><input type="email" name="email" id="email"></td>
+				</tr>
+				<tr>
+					<td><label for="name">이름</label></td>
+					<td><input type="text" name="name" id="name"></td>
+				</tr>
+				<tr>
+					<td><label for="birth">생일</label></td>
+					<td>
+						<select>
+							<option value="1">1</option>
+							<option value="1">1</option>
+							<option value="1">1</option>
+						</select>
+						년
+						<select>
+							<option value="1">1</option>
+							<option value="1">1</option>
+							<option value="1">1</option>
+						</select>
+						월
+						<select>
+							<option value="1">1</option>
+							<option value="1">1</option>
+							<option value="1">1</option>
+						</select>
+						일
+					</td>
+				</tr>
+				<tr>
+					<td><label for="phone">전화번호</label></td>
+					<td><input type="text" name="phone" id="phone"></td>
+				</tr>
+				<tr>
+					<td><label for="addr">주소</label></td>
+					<td><input type="text" name="addr" id="addr"></td>
+				</tr>
+				<tr>
+					<td><label for="hobby">취미</label></td>
+					<td>
+						<input type="checkbox" name="hobby" id="hobby" value="운동">운동
+						<input type="checkbox" name="hobby" id="hobby" value="운동">
+						운동
+						<input type="checkbox" name="hobby" id="hobby" value="운동">운동
+					</td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit" id="submit" value="가입"></td>
+					<td><input type="reset" name="reset" id="reset" value="reset"></td>
+				</tr>
+			</table>
+		</form>
+
+		<ul>
+			<li><a href="#">first</a></li>
+			<li>second</li>
+			<li>three</li>
+			<li>four</li>
+		</ul>
+		<!-- <h1 id="h2">Why do we use it?</h1>
+		<h1 class="test3">Why do we use it?</h1>
+		<p class="test3">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p> -->
+	</body>
+</html>

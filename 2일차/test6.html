@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: red;
+			width: 500px;
+			margin: 10px auto;
+		}
+
+		#middle{
+			overflow: hidden;
+		}
+		#left{
+			float: left;
+			width: 150px;
+			background: red;
+		}
+		#right{
+			float: left;
+			width: 350px;
+			background: blue;
+		}
+		#top{
+			background-color: green;
+		}
+		#bottom{
+			background-color: green;
+		}
+		
+		#container{
+			width: 500px;
+			height: 300px;
+			border: 3px solid black;
+			overflow: hidden;
+			position: relative;
+		}
+		.circle{
+			position: absolute;
+			width: 100px !important;
+			height: 100px !important;
+			border-radius: 50% 50%;
+		}
+		.borders{
+			width: 200px;
+			height: 200px;
+		}
+		#red{
+			background-color: red;
+			left: 20px; top: 20px;
+		}
+		#green{
+			background-color: green;
+			right: 20px;top: 20px;
+		}
+		#blue{
+			background-color: blue;
+			right: 20px; bottom: 20px;
+		}
+		#yellow{
+			background-color: yellow;
+			left: 20px; bottom: 20px;
+		}
+
+		#contain{
+			width: 500px;
+			height: 250px;
+			background-color: yellow;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -250px;
+			margin-top: -125px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="top">top</div>
+	<div id="middle">
+		<div id="left">left</div>
+		<div id="right">right</div>
+	</div>
+	<div id="bottom">bottom</div>
+	<br>
+	<br>
+	<h1>fasfwqfqwgqevewv</h1>
+	<div id="container">
+		<div id="red" class="circle borders"></div>
+		<div id="green" class="circle"></div>
+		<div id="blue" class="circle"></div>
+		<div id="yellow" class="circle"></div>
+		
+	</div>
+	<h1>fasfwqfqwgqevewv</h1><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+</body>
+</html>
