@@ -60,9 +60,14 @@
         if ($curtLi != null) {
           $curtLi.removeClass('select');
         }
+        
         $curtLi = $(this);
         $curtLi.addClass('select');
         $txt.val($curtLi.text());
+
+        
+        //없으면 만들어주고 있으면 제거해주고
+        //$curtLi.toggleClass('select');
       })
 
       $('#btnMod').on('click', function () {

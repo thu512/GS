@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+    body {
+      font-size: 9pt;
+
+    }
+
+    #panel {
+      width: 600px;
+      height: 300px;
+      border: 1px solid #999;
+      position: relative;
+    }
+
+    #bar {
+      position: absolute;
+      left: 50px;
+      top: 190px;
+      width: 500px;
+      height: 20px;
+      background: #F30;
+    }
+
+    .fish {
+      position: absolute;
+      left: 50px;
+      top: 120px;
+    }
+
+
+    #nav {
+      text-align: center;
+      width: 600px;
+    }
+  </style>
+  <!--
+        예제 3. 버튼을 클릭하면 물고기를 왼쪽에서 오른쪽으로 움직여 주세요.
+      -->
+
+  <script>
+    window.onload = function () {
+      console.log('onload');
+    };
+
+
+
+    $(document).ready(function () {
+      console.log('ready');
+      var $fish = $('.fish');
+      function moveFish(index, id) {
+        var rand = parseInt(Math.random() * 30);
+        var cur = parseInt($fish.eq(index).css('left'));
+        console.log((cur + rand));
+        
+        if ((cur + rand) >= 430) {
+          console.log((cur + rand));
+          clearInterval(id);
+          $fish.eq(index).css('left','50px');
+        }else{
+          $fish.eq(index).css('left',(cur + rand)+'px');
+        }
+      }
+      console.log($fish);
+      $('#btnStart').click(function () {
+
+        var id = setInterval(function(){
+          var rand = parseInt(Math.random() * 30);
+        var cur = parseInt($fish.eq(4).css('left'));
+        console.log((cur + rand));
+        
+        if ((cur + rand) >= 430) {
+          console.log((cur + rand));
+          clearInterval(id);
+          $fish.eq(4).css('left','50px');
+        }else{
+          $fish.eq(4).css('left',(cur + rand)+'px');
+        }
+        }, 1000);
+        console.log(id);
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <div>
+    <div id="panel">
+      <div id="bar"></div>
+      <img src="fish1.png" class="fish" id="fish1">
+    </div>
+    <div id="panel">
+      <div id="bar"></div>
+      <img src="fish1.png" class="fish" id="fish2">
+    </div>
+    <div id="panel">
+      <div id="bar"></div>
+      <img src="fish1.png" class="fish" id="fish3">
+    </div>
+    <div id="panel">
+      <div id="bar"></div>
+      <img src="fish1.png" class="fish" id="fish4">
+    </div>
+    <div id="panel">
+      <div id="bar"></div>
+      <img src="fish1.png" class="fish" id="fish5">
+    </div>
+    <div id="nav">
+      <button id="btnStart">
+        클릭하면 물고기가 움직여요.
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>
