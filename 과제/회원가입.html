@@ -13,6 +13,16 @@
 			float: right;
 		}
 	</style>
+	<script src="../libs/jquery-1.11.0.min.js"></script>
+	<script>
+		
+		$("#save").on('click', function () {
+			alert('사번을 입력해주세요.');
+			if($('#id').val()==''){
+				alert('사번을 입력해주세요.');
+			}
+		});
+	</script>
 </head>
 <body style="width: 400px;">
 	<div id="page-wrapper">
@@ -127,6 +137,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="submit" id="submit" class="button" value="회원가입">
+							<button id="save">저장</button>
 							<input type="reset" id="reset" class="button" value="초기화">
 						</td>
 					</tr>

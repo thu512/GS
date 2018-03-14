@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Parallax</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+</head>
+
+<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<style>
+  body {
+
+    overflow-x: hidden;
+
+  }
+
+  .center {
+
+    position: absolute;
+
+    top: 50%;
+
+    text-align: center;
+
+    width: 100%;
+
+  }
+
+  .height100 {
+
+    height: 100vh;
+
+  }
+
+  span.bgDark {
+
+    background: #222;
+
+    color: #f0f0f0;
+
+    padding: 17px;
+
+    font-size: 26px;
+
+    letter-spacing: 10px;
+
+  }
+
+  span.bgLight {
+
+    background: #f0f0f0;
+
+    color: #222;
+
+    padding: 17px;
+
+    font-size: 26px;
+
+    letter-spacing: 10px;
+
+  }
+
+  span.bgPink {
+
+    background: #e4c3d9;
+
+    color: #222;
+
+    padding: 17px;
+
+    font-size: 26px;
+
+    letter-spacing: 10px;
+
+  }
+
+  #home {
+
+    background: url(./images/Lighthouse.jpg) no-repeat center;
+
+    min-height: 100vh;
+
+    background-size: cover;
+
+    opacity: 0.65;
+
+    background-attachment: fixed;
+
+    position: relative;
+
+  }
+
+  #info {
+
+    background: white;
+
+    color: #777;
+
+    font-size: 14px;
+
+    padding: 50px 80px;
+
+    text-align: justify;
+
+    position: relative;
+
+  }
+
+  #about {
+
+    background: url(./images/pink-sky-wallpaper.jpg) no-repeat center;
+
+    min-height: 100vh;
+
+    background-size: cover;
+
+    opacity: 0.65;
+
+    background-attachment: fixed;
+
+    position: relative;
+
+  }
+
+  #explain {
+
+    background: #333;
+
+    color: #f0f0f0;
+
+    font-size: 18px;
+
+    padding: 80px;
+
+    text-align: center;
+
+    letter-spacing: 5px;
+
+    position: relative;
+
+  }
+
+  #contact {
+
+    background: url(./images/Lighthouse.jpg) no-repeat center;
+
+    min-height: 100vh;
+
+    background-size: cover;
+
+    opacity: 0.65;
+
+    background-attachment: fixed;
+
+    position: relative;
+
+  }
+
+  #footer {
+
+    background: #333;
+
+    color: #f0f0f0;
+
+    font-size: 14px;
+
+    padding: 20px;
+
+    text-align: right;
+
+    letter-spacing: 1px;
+
+  }
+</style>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+
+    <div class="container">
+
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+
+          <span class="sr-only">Toggle navigation</span>
+
+          <span class="icon-bar"></span>
+
+          <span class="icon-bar"></span>
+
+          <span class="icon-bar"></span>
+
+        </button>
+
+        <a class="navbar-brand" href="#">Bootstrap Example</a>
+
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse navbar-right">
+
+        <ul class="nav navbar-nav">
+
+          <li class="active">
+            <a href="#home">Home</a>
+          </li>
+
+          <li>
+            <a href="#about">About</a>
+          </li>
+
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <div id="home">
+
+    <div class="center">
+
+      <span class="bgDark">BOOTSTRAP PARALLAX</span>
+
+    </div>
+
+  </div>
+
+  <div id="info">
+
+    <div class="container">
+
+      Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content
+      while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper
+      libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna
+      mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula.
+      Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar,
+      in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate, non id
+      vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas
+      ante augue etiam maecenas, porta porttitor placerat leo.
+
+    </div>
+
+  </div>
+
+  <div id="about">
+
+    <div class="col-md-6 height100">
+
+      <div class="center">
+
+        <span class="bgPink">It's</span>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 height100">
+
+      <div class="center">
+
+        <span class="bgPink">SIMPLE</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="explain">
+
+    <div class="container">
+
+      SCROLL UP & DOWN
+
+    </div>
+
+  </div>
+
+  <div id="contact">
+
+    <div class="center">
+
+      <span class="bgLight">END.</span>
+
+    </div>
+
+  </div>
+
+  <div id="footer">
+
+    <div class="container">
+
+      <p>Heojju@2016</p>
+
+    </div>
+
+  </div>
+
+</body>
+
+<script>
+
+  /*scroll animate*/
+
+  $('#navbar a').click(function () {
+
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+      if (target.length) {
+
+        $('html,body').animate({
+
+          scrollTop: target.offset().top - 50
+
+        }, 1000);
+
+        return false;
+
+      }
+
+    }
+
+  });
+
+</script>
+
+</html>
