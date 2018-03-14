@@ -112,7 +112,14 @@
         }
       })
     });
-
+    function money(str){
+			var s='';
+			while(str.length>3){
+				s+=','+str.slice(str.length-3,str.length);
+				str=str.slice(0,str.length-3);
+			}
+			return str+s;
+		}
     function reset() {
       str = null;
       num1 = null;
