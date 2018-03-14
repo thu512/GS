@@ -1,93 +1,185 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script>
-      $(window).scroll(function () {
-  
-        var value = $(this).scrollTop();
-  
-        var hoge1 = value * 0.001 + 0.5;
-  
-        var hoge3 = 2 - value * 0.0009;
-  
-        var hoge4 = value * 0.0009;
-  
-  
-  
-        // Area1 (첫번째 div) 
-  
-        if (hoge1 > 0.5) {
-  
-          $("#area1").css("transform", "scale(" + hoge1 + ")"); // 크기
-  
-        }
-  
-        // Area2 ​(두번째 div)
-  
-        if (hoge1 > 0.1) {
-  
-          $("#area2").css("transform", "perspective(1000px) rotateY(" + value + "deg)") // 원근법, 회전
-  
-        }
-  
-        // Area3 ​(세번째 div)​
-  
-        $("#area3").css("transform", "scale(" + hoge3 + ") rotate(" + value + "deg)"); // 크기, 회전
-  
-  
-  
-        // Area4 ​(네번째 div)​
-  
-        if (hoge4 <= 1) {
-  
-          $("#area4").css("transform", "opacity" + hoge4); // 투명도
-  
-        }
-  
-      })
-    </script>
   <style>
-    .bg {
-      position: absolute
+    table {
+      width: 500px;
+      height: 300px;
+      text-align: center;
+      margin: 10px auto;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: whitesmoke;
     }
 
-
-
-    .bg1 {
-      background: url(-) no-repeat 50% 0 fixed
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
     }
 
-    .bg2 {
-      background: url(-) no-repeat 50% 0 fixed
+    td {
+      width: 100px;
     }
 
-    .bg3 {
-      background: url(-) no-repeat 50% 0 fixed
+    .lcd {
+      width: 99%;
+      border: 0 solid black;
+      background-color: transparent;
+      text-align: right;
+
     }
 
-    ​ .bg4 {
-      background: url(-) no-repeat 50% 0 fixed
+    #lcd1 {
+      height: 10px;
+      font-size: 10px;
+    }
+
+    #lcd2 {
+      height: 100%;
+      font-size: 40px;
+    }
+
+    .num:active {
+      background-color: gray;
+    }
+
+    .op:active {
+      background-color: blue;
+    }
+
+    .res:active {
+      background-color: yellow;
+    }
+
+    .C:active {
+      background-color: red;
     }
   </style>
-</head>
-<body>
-    <div id="area1"></div>
+  <script>
+    var $lcd1 = null;
+    var $lcd2 = null;
+    var num1 = null;
+    var num2 = null;
+    var op = null;
+    var str = null;
+    $(document).ready(function () {
+      $lcd1 = $("#lcd1");
+      $lcd2 = $("#lcd2");
+      $('.btn').on('click', function () {
+        if ($(this).is('.num')) {
+          if ($lcd2.val().charAt(0) == 0) {
+            $lcd2.val(this.id);
+          } else {
+            $lcd2.val($lcd2.val() + '' + this.id);
+          }
+        }
+        else if ($(this).is('.op') && ($lcd2.val() != '')) {
+          if (num1 == null) {
+            num1 = parseInt($lcd2.val());
+            op = this.id;
+            str += num1;
+            str += op;
+            $lcd1.val(str);
+            $lcd2.val('');
+          } else {
+            num2 = parseInt($lcd2.val());
+            num1 = cal(num1, num2, op);
+            op = this.id;
+            str += num2;
+            str += op;
+            $lcd1.val(str);
+            $lcd2.val('');
+          }
+        }
+        else if ($(this).is('.res') && ($lcd2.val() != '')) {
+          num2 = parseInt($lcd2.val());
+          $lcd2.val(cal(num1, num2, op));
+          $lcd1.val('');
+          reset();
+        }
+        else if ($(this).is('.C')) {
+          reset();
+          $lcd2.val('');
+          $lcd1.val('');
+        }
+      })
+    });
 
-    <div id="area2"></div>​
-  
-  
-  
-    <div id="area3"></div>​
-  
-    <div id="ashColorArea"></div>​
-  
-    <div id="area4"></div>​
-  
-    <div id="redColorArea"></div>​​
+    function reset() {
+      str = null;
+      num1 = null;
+      num2 = null;
+      op = null;
+    }
+    function cal(num1, num2, op) {
+      var result = null;
+      switch (op) {
+        case 'X':
+          result = num1 * num2;
+          break;
+        case '/':
+          result = num1 / num2;
+          break;
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        default:
+          break;
+      }
+      return result;
+    }
+  </script>
+
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td colspan="4">
+        <input type="text" id="lcd1" class="lcd" disabled="disabled">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <input type="text" id="lcd2" class="lcd" disabled="disabled">
+      </td>
+    </tr>
+    <tr>
+      <td id="7" class="btn num">7</td>
+      <td id="8" class="btn num">8</td>
+      <td id="9" class="btn num">9</td>
+      <td id="X" class="btn op">X</td>
+    </tr>
+    <tr>
+      <td id="4" class="btn num">4</td>
+      <td id="5" class="btn num">5</td>
+      <td id="6" class="btn num">6</td>
+      <td id="-" class="btn op">-</td>
+    </tr>
+    <tr>
+      <td id="1" class="btn num">1</td>
+      <td id="2" class="btn num">2</td>
+      <td id="3" class="btn num">3</td>
+      <td id="+" class="btn op">+</td>
+    </tr>
+    <tr>
+      <td id="C" class="btn C">C</td>
+      <td id="0" class="btn num">0</td>
+      <td id="/" class="btn op">/</td>
+      <td id="=" class="btn res">=</td>
+    </tr>
+  </table>
 </body>
+
 </html>
