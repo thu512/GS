@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>jQuery Parallax Plugin Demo</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('section[data-type="background"]').each(function () {
+        var $bgobj = $(this); // assigning the object
+
+        $(window).scroll(function () {
+          var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+
+          // Put together our final background position
+          var coords = '50% ' + yPos + 'px';
+
+          // Move the background
+          $bgobj.css({ backgroundPosition: coords });
+        });
+      });
+    });
+  </script>
+  <style>
+    #home {
+      background: url(../images/lam1.jpg) 50% 0 repeat fixed;
+      min-height: 1000px;
+      height: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1920px;
+      position: relative;
+    }
+
+    #home article {
+      height: 458px;
+      position: absolute;
+      text-align: center;
+      top: 150px;
+      width: 100%;
+    }
+
+    #about {
+      background: url(../images/lam2.jpg) 50% 0 repeat fixed;
+      min-height: 1000px;
+      height: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1920px;
+      position: relative;
+      -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    #about article {
+      height: 458px;
+      position: absolute;
+      text-align: center;
+      top: 150px;
+      width: 100%;
+    }
+
+    #footer {
+      background: url(../images/bu.jpg) 50% 0 repeat fixed;
+      min-height: 1000px;
+      height: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1920px;
+      position: relative;
+      -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    #footer article {
+      height: 458px;
+      position: absolute;
+      text-align: center;
+      top: 150px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="home" data-type="background" data-speed="10" class="pages">
+    <article>I am absolute positioned</article>
+  </section>
+
+  <section id="about" data-type="background" data-speed="10" class="pages">
+    <article>Simple Parallax Scroll</article>
+  </section>
+  <section id="footer" data-type="background" data-speed="10" class="pages">
+    <article>Simple Parallax Scroll</article>
+  </section>
+</body>
+
+</html>

@@ -1,14 +1,93 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+      $(window).scroll(function () {
+  
+        var value = $(this).scrollTop();
+  
+        var hoge1 = value * 0.001 + 0.5;
+  
+        var hoge3 = 2 - value * 0.0009;
+  
+        var hoge4 = value * 0.0009;
+  
+  
+  
+        // Area1 (첫번째 div) 
+  
+        if (hoge1 > 0.5) {
+  
+          $("#area1").css("transform", "scale(" + hoge1 + ")"); // 크기
+  
+        }
+  
+        // Area2 ​(두번째 div)
+  
+        if (hoge1 > 0.1) {
+  
+          $("#area2").css("transform", "perspective(1000px) rotateY(" + value + "deg)") // 원근법, 회전
+  
+        }
+  
+        // Area3 ​(세번째 div)​
+  
+        $("#area3").css("transform", "scale(" + hoge3 + ") rotate(" + value + "deg)"); // 크기, 회전
+  
+  
+  
+        // Area4 ​(네번째 div)​
+  
+        if (hoge4 <= 1) {
+  
+          $("#area4").css("transform", "opacity" + hoge4); // 투명도
+  
+        }
+  
+      })
+    </script>
+  <style>
+    .bg {
+      position: absolute
+    }
+
+
+
+    .bg1 {
+      background: url(-) no-repeat 50% 0 fixed
+    }
+
+    .bg2 {
+      background: url(-) no-repeat 50% 0 fixed
+    }
+
+    .bg3 {
+      background: url(-) no-repeat 50% 0 fixed
+    }
+
+    ​ .bg4 {
+      background: url(-) no-repeat 50% 0 fixed
+    }
+  </style>
 </head>
 <body>
+    <div id="area1"></div>
+
+    <div id="area2"></div>​
   
+  
+  
+    <div id="area3"></div>​
+  
+    <div id="ashColorArea"></div>​
+  
+    <div id="area4"></div>​
+  
+    <div id="redColorArea"></div>​​
 </body>
 </html>
