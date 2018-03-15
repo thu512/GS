@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>2018캘린더</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+	<style type="text/css">
+		table {
+			width: 80%;
+			height: 500px;
+			text-align: center;
+			margin: 10px auto;
+		}
+
+		span {
+			font-size: 70px;
+			font-weight: bold;
+		}
+
+		table,
+		th,
+		td {
+			height: 80px;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		#control {
+			margin-top: 30px;
+			margin-bottom: 30px;
+			text-align: center;
+		}
+
+		.btn {
+			margin-left: 20px;
+			margin-right: 20px;
+			background: none;
+			width: 50px;
+			height: 50px;
+			font-size: 70px;
+			border: none;
+		}
+
+		.title {
+			background-color: #9b9b9b;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.title:first-child {
+			color: red;
+		}
+
+		.title:last-child {
+			color: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		var cnt = 1;
+		var $month = null;
+		$(document).ready(function () {
+			$month = $('#month');
+			makeCel(1);
+			$('button').on('click', function () {
+				clear();
+				if (this.id === 'next') {
+					if (cnt >= 12) {
+						cnt = 1;
+					} else {
+						cnt += 1;
+					}
+					$month.text('2018년 ' + cnt + ' 월');
+				} else {
+					if (cnt <= 1) {
+						cnt = 12;
+					} else {
+						cnt -= 1;
+					}
+					$month.text('2018년 ' + cnt + ' 월');
+				}
+				makeCel(cnt);
+			});
+		});
+
+		function makeCel(num) {
+			var first = new Date(2018, num - 1, 1);
+			var last = new Date(2018, num, 0);
+			var line_num = 1;
+			var day = first.getDay();
+			for (var i = 1; i <= last.getDate(); i++) {
+				if (day == 7) {
+					line_num++;
+					day = 0;
+				}
+				var $td = $('#' + line_num + ' .' + day);
+				$td.text(i);
+				if (day == 6) {
+					$td.css('color', 'blue');
+				} else if (day == 0) {
+					$td.css('color', 'red');
+				}
+				day++;
+			}
+		}
+
+		function clear() {
+			$('td').each(function () {
+				if (!($(this).attr('class') == 'title')) {
+					$(this).text('');
+				}
+			});
+		}
+	</script>
+</head>
+
+<body>
+	<!-- 7x7 -->
+	<div id="control">
+		<button id="prev" class="btn"><</button>
+			<span id="month">2018년 1월</span>
+		<button id="next" class="btn">></button>
+	</div>
+	<table>
+		<tr>
+			<td class="title">일</td>
+			<td class="title">월</td>
+			<td class="title">화</td>
+			<td class="title">수</td>
+			<td class="title">목</td>
+			<td class="title">금</td>
+			<td class="title">토</td>
+		</tr>
+		<tr id="1">
+			<td class="0"></td>
+			<td class="1"></td>
+			<td class="2"></td>
+			<td class="3"></td>
+			<td class="4"></td>
+			<td class="5"></td>
+			<td class="6"></td>
+		</tr>
+		<tr id="2">
+			<td class="0"></td>
+			<td class="1"></td>
+			<td class="2"></td>
+			<td class="3"></td>
+			<td class="4"></td>
+			<td class="5"></td>
+			<td class="6"></td>
+		</tr>
+		<tr id="3">
+			<td class="0"></td>
+			<td class="1"></td>
+			<td class="2"></td>
+			<td class="3"></td>
+			<td class="4"></td>
+			<td class="5"></td>
+			<td class="6"></td>
+		</tr>
+		<tr id="4">
+			<td class="0"></td>
+			<td class="1"></td>
+			<td class="2"></td>
+			<td class="3"></td>
+			<td class="4"></td>
+			<td class="5"></td>
+			<td class="6"></td>
+		</tr>
+		<tr id="5">
+			<td class="0"></td>
+			<td class="1"></td>
+			<td class="2"></td>
+			<td class="3"></td>
+			<td class="4"></td>
+			<td class="5"></td>
+			<td class="6"></td>
+		</tr>
+		<tr id="6">
+			<td class="0"></td>
+			<td class="1"></td>
+			<td class="2"></td>
+			<td class="3"></td>
+			<td class="4"></td>
+			<td class="5"></td>
+			<td class="6"></td>
+		</tr>
+
+	</table>
+</body>
+
+</html>
