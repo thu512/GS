@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+	<style>
+	</style>
+
+	<script>
+		$(document).ready(function () {
+			$('#txtrd').on('click', function () {
+				console.log($('#txt').val());
+			})
+			$('#txtwr').on('click', function () {
+				$('#txt').val($('#txtwr').text());
+			})
+			$('#rdord').on('click', function () {
+				console.log($("input[name='rdo']:checked").val());
+			})
+			$('#rdowr').on('click', function () {
+				if ($("input[name='rdo']:checked").val() == 1) {	
+					$("input[name='rdo']:radio[value='2']").prop('checked', true);
+				} else {
+					$("input[name='rdo']:radio[value='1']").prop('checked', true);	
+				}
+			})
+			$('#selrd').on('click', function () {
+				console.log($("#selectbox option:selected").val());
+			})
+			$('#chkrd').on('click', function () {
+				$("input:checkbox:checked").each(function(){
+					console.log($(this).val());
+				});
+			})
+			$('#chk1').on('click', function () {
+				$("input:checkbox:checked").each(function(){
+					$(this).prop("checked", false);
+				});
+			})
+			$('#chk2').on('click', function () {
+				$('input:checkbox').prop('checked',true);
+			})
+
+			$('#tard').on('click',function(){
+					console.log($('#txtarea').val());
+			})
+			$('#ta1').on('click',function(){
+					$('#txtarea').val('');
+			})
+			$('#ta2').on('click',function(){
+					$('#txtarea').val($(this).text());
+			})
+		});
+
+	</script>
+</head>
+
+<body>
+	<input type="text" id="txt" />
+	<br>
+	<br>
+	<button id="txtrd">텍스트 읽기</button>
+	<button id="txtwr">텍스트 쓰기 버튼 이름으로</button>
+	<br>
+	<br>
+
+	<input type="radio" name="rdo" value="1" />
+	<input type="radio" name="rdo" value="2" />
+	<br>
+	<br>
+	<button id="rdord">체크값 읽기</button>
+	<button id="rdowr">다른녀석으로 체크하기</button>
+	<br>
+	<br>
+
+	<select id="selectbox">
+		<option value="s1">s1</option>
+		<option value="s2">s2</option>
+		<option value="s3">s3</option>
+		<option value="s4">s4</option>
+		<option value="s5">s5</option>
+	</select>
+	<br>
+	<button id="selrd">선택값 읽기</button>
+	<!-- <button id="rdowr">다른녀석으로 체크하기</button> -->
+	<br>
+	<br>
+	<input type="checkbox" name="chk" value="c1" />
+	<input type="checkbox" name="chk" value="c2" />
+	<input type="checkbox" name="chk" value="c3" />
+	<input type="checkbox" name="chk" value="c4" />
+	<input type="checkbox" name="chk" value="c5" />
+	<br>
+	<br>
+	<button id="chkrd">선택값 읽기</button>
+	<button id="chk1">체크된것 해제</button>
+	<button id="chk2">체크하기</button>
+	<br>
+	<br>
+	<textarea id="txtarea"></textarea>
+	<br>
+	<button id="tard">값 읽기</button>
+	<button id="ta1">지우기</button>
+	<button id="ta2">버튼값 입력</button>
+	<br>
+</body>
+
+</html>

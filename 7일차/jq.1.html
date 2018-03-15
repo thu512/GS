@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+	<style>
+	</style>
+
+	<script>
+		$(document).ready(function () {
+			//포커스에서 빠져나올때
+			$('#txt').on('blur', function () {
+				console.log($(this).val());
+			});
+			
+			//값이 변경되고 포커스를 빠져나오면
+			$('#txt').on('change', function () {
+				console.log($(this).val());
+			});
+			
+			$(document).on('scroll', function () {
+				console.log('dom');
+			});
+
+			$('#txt').on('select', function () {
+				console.log($(this).val());
+			});
+
+			$('#txt').on('click', function () {
+				console.log('click');
+			});
+
+			$('#txt').on('dbclick', function () {
+				console.log('dbclick');
+			});
+
+			$('#txt').on('focus', function () {
+				console.log('focus');
+			});
+			$('#txt').on('keydown', function (event) {
+				console.log('keydown');
+				console.log($(this).val());
+				console.log(event);
+			});
+			$('#txt').on('keyup', function (event) {
+				console.log('keyup');
+				console.log($(this).val());
+				console.log(event);
+			});
+			$('#txt').on('keypress', function (event) {
+				console.log('keypress');
+				console.log($(this).val());
+				console.log(event);
+			});
+
+
+		});
+
+	</script>
+</head>
+
+<body>
+	<input type="text" id="txt" />
+	<br>
+	<textarea id="ta"></textarea>
+</body>
+
+</html>
