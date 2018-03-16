@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>ajax 테스트</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+  </style>
+
+  <script>
+    var jsondata =
+      {
+        name: '이창주',
+        salary: 10000,
+        hireDate: '2018-03-01',
+        sex: 'M'
+      };
+    
+
+
+
+    // $.ajax({
+    //   type: "post",
+    //   url: "http://192.168.9.180:8081/intern/employees",
+    //   data: jsondata,
+    //   dataType: "json",
+    //   success: function (response) {
+
+    //   }
+    // })
+    //   .done(function (data) {
+    //     $.ajax({
+    //       type: "GET",
+    //       url: "http://192.168.9.180:8081/intern/employees",
+    //       dataType: "json",
+    //       success: function (response) {
+
+    //       }
+    //     })
+    //       .done(function (data) {
+    //         console.log(data);
+    //       })
+    //       .fail(function (xhr, status, errorThrown) {
+
+    //       })
+    //       .always(function (xhr, status) {
+    //         console.log('완료');
+    //       });
+    //   })
+    //   .fail(function (xhr, status, errorThrown) {
+    //     console.log(JSON.parse(xhr.responseText).message);
+    //   })
+    //   .always(function (xhr, status) {
+    //     console.log('완료');
+    //   });
+    var jsoncmdata={
+      mstcd:'HOBBY_SXN'
+    };
+    $.ajax({
+      type: "GET",
+      url: "http://192.168.9.180:8081/intern/commcd",
+      data: jsoncmdata,
+      dataType: "json",
+      success: function (response) {
+        console.log(response); 
+        for(var i=0; i<response.length; i++){
+          var $opt = $('<option value='+response[i].detCd+'>'+response[i].detNm+'</option>')
+          $('select').append($opt);
+          var $chk = $('<br><input type="checkbox" name="hobby" id="hobby" value='+response[i].detCd+'>'+response[i].detNm+'<br>');
+          //$chk.text(response[i].detNm);
+          $('body').append($chk);
+        }
+        
+      }
+    });
+
+    $(document).ready(function () {
+      $('button').on('click',function(){
+        $("input:checkbox:checked").each(function(){
+					console.log('체크박스: '+$(this).val());
+				});
+
+        console.log('셀렉트: '+$("#selectbox option:selected").val());
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <select id="selectbox">
+
+  </select>
+  <br>
+  <button>확인</button>
+</body>
+
+</html>
