@@ -16,7 +16,7 @@
         hireDate: '2018-03-01',
         sex: 'M'
       };
-    
+
 
 
 
@@ -54,8 +54,8 @@
     //   .always(function (xhr, status) {
     //     console.log('완료');
     //   });
-    var jsoncmdata={
-      mstcd:'HOBBY_SXN'
+    var jsoncmdata = {
+      mstcd: 'HOBBY_SXN'
     };
     $.ajax({
       type: "GET",
@@ -63,25 +63,22 @@
       data: jsoncmdata,
       dataType: "json",
       success: function (response) {
-        console.log(response); 
-        for(var i=0; i<response.length; i++){
-          var $opt = $('<option value='+response[i].detCd+'>'+response[i].detNm+'</option>')
+        $.each(response, function () {
+          var $opt = $('<option value=' + this.detCd + '>' + this.detNm + '</option>')
           $('select').append($opt);
-          var $chk = $('<br><input type="checkbox" name="hobby" id="hobby" value='+response[i].detCd+'>'+response[i].detNm+'<br>');
-          //$chk.text(response[i].detNm);
+          var $chk = $('<br><input type="checkbox" name="hobby" id="hobby" value=' + this.detCd + '>' + this.detNm + '<br>');
           $('body').append($chk);
-        }
-        
+        });
       }
     });
 
     $(document).ready(function () {
-      $('button').on('click',function(){
-        $("input:checkbox:checked").each(function(){
-					console.log('체크박스: '+$(this).val());
-				});
+      $('button').on('click', function () {
+        $("input:checkbox:checked").each(function () {
+          console.log('체크박스: ' + $(this).val());
+        });
 
-        console.log('셀렉트: '+$("#selectbox option:selected").val());
+        console.log('셀렉트: ' + $("#selectbox option:selected").val());
       });
     });
   </script>

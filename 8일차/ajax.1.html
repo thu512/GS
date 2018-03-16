@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>ajax 테스트</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+    td{
+      width:100px;
+      height: 50px;
+    }
+    table{
+			width: 1100px;
+			height: 600px;
+			text-align: center;
+			margin: 10px auto;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		table,th,td{
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		td{
+			width: 100px;
+		}
+  </style>
+
+  <script>
+    
+    $.ajax({
+      type: "get",
+      url: "http://192.168.9.180:8081/intern/employees",
+      dataType: "json",
+      success: function (response) {
+        console.log(response);
+      }
+    })
+      .done(function (data) {
+        $.each(data,function(){
+          var $tr = $('<tr><td>'+this.name+'</td><td>'+this.salary+'</td><td>'+this.sex+'</td><td>'+this.hireDate+'</td></tr>');
+          $('table').append($tr);
+        });
+      })
+      .fail(function (xhr, status, errorThrown) {
+        console.log(JSON.parse(xhr.responseText).message);
+      })
+      .always(function (xhr, status) {
+        console.log('완료');
+      });
+  </script>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>name</td>
+      <td>salary</td>
+      <td>sex</td>
+      <td>hireDate</td>
+    </tr>
+  </table>
+</body>
+
+</html>

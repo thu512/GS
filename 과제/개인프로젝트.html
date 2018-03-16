@@ -44,7 +44,7 @@
 
         if (this.id == 'left') {
           leftMove();
-        }else if(this.id == 'right'){
+        } else if (this.id == 'right') {
           rightMove();
         }
 
@@ -54,22 +54,30 @@
         var nextIndex = 0;
         $('.des_main').each(function (index) {
           if ($(this).css('display') == 'block') {
-            $(this).css('display', 'none');
-            nextIndex = index == 0 ? 2 : index-=1;
+            $(this).fadeOut("slow", function () {
+              $(this).css('display', 'none');
+              nextIndex = index == 0 ? 2 : index -= 1;
+              $('.des_main').eq(nextIndex).fadeIn('slow', function () {
+                $('.des_main').eq(nextIndex).css('display', 'block');
+              });
+            });
           }
         });
-        $('.des_main').eq(nextIndex).css('display', 'block');
       }
 
       function rightMove() {
         var nextIndex = 0;
         $('.des_main').each(function (index) {
           if ($(this).css('display') == 'block') {
-            $(this).css('display', 'none');
-            nextIndex = index == 2 ? 0 : index+=1;
+            $(this).fadeOut("slow", function () {
+              $(this).css('display', 'none');
+              nextIndex = index == 2 ? 0 : index += 1;
+              $('.des_main').eq(nextIndex).fadeIn('slow', function () {
+                $('.des_main').eq(nextIndex).css('display', 'block');
+              });
+            });
           }
         });
-        $('.des_main').eq(nextIndex).css('display', 'block');
       }
     });
   </script>
@@ -169,6 +177,9 @@
       width: 90%;
       height: 1000px;
       margin: 0 20px;
+      transition: opacity 2s linear;
+      transform: translate(0);
+      opacity: 1;
     }
 
     button {
@@ -179,13 +190,13 @@
     }
 
     .des-main-img {
-      width: 100%;
+      width: 80%;
       height: 700px;
     }
 
     .des-main-txt {
       height: 300px;
-      width: 80%;
+      width: 70%;
       margin: 0 auto;
       font-size: 15px;
       font-weight: bold;
@@ -234,12 +245,12 @@
           <a href="#Design" class="menu-font">Design</a>
         </li>
         <li>
-            <a href="#ux" class="menu-font">UX</a>
-          </li>
+          <a href="#ux" class="menu-font">UX</a>
+        </li>
         <li>
           <a href="#Performance" class="menu-font">Performance</a>
         </li>
-        
+
       </ul>
     </div>
   </div>
@@ -255,17 +266,20 @@
         </div>
         <div id="des_main1" class="des_main">
           <img class="des-main-img" src="../img/i2_1.jpg">
-          <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까? 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다. 그리고 이제 iPhone X에
-            이르러 그것은 현실이 되었습니다.</p>
+          <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까?
+            <br> 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다.
+            <br> 그리고 이제 iPhone X에 이르러 그것은 현실이 되었습니다.</p>
         </div>
         <div id="des_main2" class="des_main">
-          <img class="des-main-img" src="../img/i2_2.jpg">
-          <p class="des-main-txt">사용 경험을 방해하는 그 무엇도 없이 매끈하게 펼쳐진 기기의 앞면을 만들기 위해, 우리는 홈 버튼을 없앴습니다. 그리고 그 역할을 대신할, 새로우면서도 익숙한 방식을 도입했습니다.</p>
+          <video class="des-main-img" autoplay loop>
+            <source src="https://images.apple.com/media/us/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/primary/design_corners/large.mp4">
+          </video>
+          <p class="des-main-txt">새로운 공법과 기술이 적용된 디스플레이는 우아하게 처리된 둥근 모서리 구석에 이르기까지 전체 디자인의 곡선을 정확하게 따라갑니다.</p>
         </div>
         <div id="des_main3" class="des_main">
-          <img class="des-main-img" src="../img/i2_3.jpg">
-          <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까? 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다. 그리고 이제 iPhone X에
-            이르러 그것은 현실이 되었습니다.</p>
+          <img class="des-main-img" src="../img/i2_2.jpg">
+          <p class="des-main-txt">사용 경험을 방해하는 그 무엇도 없이 매끈하게 펼쳐진 기기의 앞면을 만들기 위해, 우리는 홈 버튼을 없앴습니다.
+            <br> 그리고 그 역할을 대신할, 새로우면서도 익숙한 방식을 도입했습니다.</p>
         </div>
         <div id="des_right">
           <button id="right">
@@ -277,12 +291,12 @@
     </article>
   </section>
   <section id="ux" data-type="background" data-speed="10" class="pages">
-      <article>Simple Parallax Scroll</article>
-    </section>
+    <article>Simple Parallax Scroll</article>
+  </section>
   <section id="Performance" data-type="background" data-speed="10" class="pages">
     <article>Simple Parallax Scroll</article>
   </section>
-  
+
 
 </body>
 
