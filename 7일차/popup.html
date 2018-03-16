@@ -10,7 +10,11 @@
 
 	<script>
 		
-
+		$(document).ready(function () {
+			$('#btn').on('click', function () {
+				alert($(opener.document).on)
+			});
+		});
 	</script>
 </head>
 

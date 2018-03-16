@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>아이폰X</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('section[data-type="background"]').each(function () {
+        var $bgobj = $(this);
+        console.log($bgobj);
+        $(window).scroll(function () {
+          var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
+          var coords = '50% ' + (yPos) + 'px';
+          $bgobj.css({ backgroundPosition: coords });
+        });
+      });
+
+      $(function () {
+        var nav = $('.nav');
+        var navTop = nav.offset().top;
+        var lastScroll = 50;
+        $(window).scroll(function () {
+
+          var windowTop = $(this).scrollTop();
+          if (windowTop > lastScroll) {
+            nav.removeClass('is_fixed');
+          } else {
+            nav.addClass('is_fixed');
+          }
+          lastScroll = windowTop;
+        });
+      })
+
+      $('.des_main').each(function (index) {
+        if (index != 0) {
+          $(this).css('display', 'none');
+        }
+      });
+
+      $('button').on('click', function () {
+
+        if (this.id == 'left') {
+          leftMove();
+        }else if(this.id == 'right'){
+          rightMove();
+        }
+
+      })
+
+      function leftMove() {
+        var nextIndex = 0;
+        $('.des_main').each(function (index) {
+          if ($(this).css('display') == 'block') {
+            $(this).css('display', 'none');
+            nextIndex = index == 0 ? 2 : index-=1;
+          }
+        });
+        $('.des_main').eq(nextIndex).css('display', 'block');
+      }
+
+      function rightMove() {
+        var nextIndex = 0;
+        $('.des_main').each(function (index) {
+          if ($(this).css('display') == 'block') {
+            $(this).css('display', 'none');
+            nextIndex = index == 2 ? 0 : index+=1;
+          }
+        });
+        $('.des_main').eq(nextIndex).css('display', 'block');
+      }
+    });
+  </script>
+  <style>
+    body {
+      width: 100%;
+      margin: 0;
+    }
+
+    .nav {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      margin-bottom: 100px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav ul {
+      margin-top: 0;
+      overflow: hidden;
+    }
+
+    .nav li {
+      list-style: none;
+      width: 125px;
+      float: left;
+    }
+
+    .nav a {
+      display: block;
+      height: 50px;
+      text-align: center;
+      text-decoration: none;
+      line-height: 50px;
+      color: white;
+    }
+
+    .logo {
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    .is_fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    section {
+      min-height: 1000px;
+      height: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1920px;
+      position: relative;
+
+    }
+
+    #main {
+      background: url(../img/i1.png) 50% 0 no-repeat fixed;
+      background-size: cover;
+    }
+
+    #Design {
+      /* background: url(../img/i2_1.jpg) 50% 0 no-repeat fixed;
+      background-size: cover; */
+    }
+
+    #Design article {
+      height: 900px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+
+    #des_menu {
+      position: relative;
+    }
+
+    #des_left {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+    }
+
+    #des_right {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+    }
+
+    #des_main {
+      width: 90%;
+      height: 1000px;
+      margin: 0 20px;
+    }
+
+    button {
+      background-image: none;
+      border: 0px;
+      background: rgba(0, 0, 0, 0);
+      outline-style: none;
+    }
+
+    .des-main-img {
+      width: 100%;
+      height: 700px;
+    }
+
+    .des-main-txt {
+      height: 300px;
+      width: 80%;
+      margin: 0 auto;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 150%;
+    }
+
+    .arrow-img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #Performance {
+      background: url(../images/lam2.jpg) 50% 0 repeat fixed;
+    }
+
+    #Performance article {
+      height: 458px;
+      position: absolute;
+      text-align: center;
+      top: 150px;
+      width: 100%;
+    }
+
+    #footer {
+      background: url(../images/bu.jpg) 50% 0 repeat fixed;
+    }
+
+    #footer article {
+      height: 458px;
+      position: absolute;
+      text-align: center;
+      top: 150px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div class="nav">
+      <ul>
+        <li>
+          <a href="#main" class="logo">X</a>
+        </li>
+        <li>
+          <a href="#Design" class="menu-font">Design</a>
+        </li>
+        <li>
+          <a href="#Performance" class="menu-font">Performance</a>
+        </li>
+        <li>
+          <a href="#Compare" class="menu-font">Compare</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <section id="main" data-type="background" data-speed="10" class="pages">
+  </section>
+  <section id="Design" data-type="background" data-speed="10" class="pages">
+    <article>
+      <div id="des_menu">
+        <div id="des_left">
+          <button id="left">
+            <img class="arrow-img" src="../img/left-arrow.png">
+          </button>
+        </div>
+        <div id="des_main1" class="des_main">
+          <img class="des-main-img" src="../img/i2_1.jpg">
+          <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까? 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다. 그리고 이제 iPhone X에
+            이르러 그것은 현실이 되었습니다.</p>
+        </div>
+        <div id="des_main2" class="des_main">
+          <img class="des-main-img" src="../img/i2_2.jpg">
+          <p class="des-main-txt">사용 경험을 방해하는 그 무엇도 없이 매끈하게 펼쳐진 기기의 앞면을 만들기 위해, 우리는 홈 버튼을 없앴습니다. 그리고 그 역할을 대신할, 새로우면서도 익숙한 방식을 도입했습니다.</p>
+        </div>
+        <div id="des_main3" class="des_main">
+          <img class="des-main-img" src="../img/i2_3.jpg">
+          <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까? 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다. 그리고 이제 iPhone X에
+            이르러 그것은 현실이 되었습니다.</p>
+        </div>
+        <div id="des_right">
+          <button id="right">
+            <img class="arrow-img" src="../img/right-arrow.png">
+          </button>
+        </div>
+      </div>
+
+    </article>
+  </section>
+  <section id="Performance" data-type="background" data-speed="10" class="pages">
+    <article>Simple Parallax Scroll</article>
+  </section>
+  <section id="Compare" data-type="background" data-speed="10" class="pages">
+    <article>Simple Parallax Scroll</article>
+  </section>
+
+</body>
+
+</html>
