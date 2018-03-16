@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+    #info {
+      text-align: center;
+    }
+
+    table {
+      width: 1100px;
+      height: 600px;
+      text-align: center;
+      margin: 10px auto;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    td {
+      width: 100px;
+    }
+
+    .bokdo{
+
+    }
+    .11{
+      
+    }
+  </style>
+
+  <script>
+    var _11=['강지혜','권용수','권혁재','김설한','김성경','김성곤','김성민','김준호','김현수','류도연','박지용','서고은','서유진','손성준','손지웅','신우철','엄유진','오은주','오태경','이경진','이상현'];
+    var _12=['박보미','이경화','김수진','유희수','박소현','조은솔','장진영','김윤지','채유진','최영롱','진민영','고하윤','강혜정','손혜성','송현석','신종욱','오병준','우연찬','위재원','은종현','이경민','이상훈','이융성','이인성','이종건','이창주','임혜성','장동주','정광수','정진','조국','조현우','주형진','차주현','최규효','최준우'];
+    
+    var row=null;
+    var col=null;
+    $(document).ready(function () {
+      $('#create').on('click', function () {
+        row=$('#row').val();
+        col=$('#col').val();
+        
+        if(eval(row*(col-1)+1) >= 57){
+          $('tr').remove();
+          createSeat(row,col);
+          $('tr').each(function(){
+            if($(this).index() != 0 ){
+              
+              $(this).find('td').eq(parseInt(col/2)).addClass('bokdo').text('복도');
+            }else{
+              $(this).find('td').eq(parseInt(col/2)).addClass('11');
+            }
+          });
+
+        }else{
+          alert('범위를 확인해주세요.');
+        }
+
+
+
+      });
+      
+
+    });
+    
+    function createSeat(row, col){
+      
+      for(var i=0; i<row; i++){
+        var $tr = $('<tr></tr>');
+        $('table').append($tr);
+      }
+      $('tr').each(function(){
+        for(var j=0; j<col; j++){
+          var $td = $('<td></td>');
+          $(this).append($td);
+        }
+      });
+
+    }
+
+    function randomNum(len){
+			var result = new Array(len);
+			var flag = new Array(len);
+			for(var i=0; i<flag.length; i++){
+				flag[i]=false;
+			}
+			var i=0;
+			while(!check()){
+				var value = parseInt(Math.random()*len);
+				if(flag[value]==false){
+					flag[value]=true;
+					result[i]=value;
+					i++;
+				}
+			}
+
+			return result;
+
+			function check(){
+				for(var i=0; i<flag.length; i++){
+					if(!flag[i]){
+						return false;
+					}
+				}
+				return true;
+			}
+		}
+  </script>
+</head>
+
+<body>
+  <div id="info">
+    <label for="row">세로</label>
+    <input type="text" id="row">
+    <label for="col">가로</label>
+    <input type="text" id="col">
+    <button id="create">자리생성</button>
+    <button id="batch">자리배치</button>
+  </div>
+  <table>
+    
+  </table>
+</body>
+
+</html>
