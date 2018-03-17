@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>ajax 테스트</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+    td {
+      width: 100px;
+      height: 50px;
+    }
+
+    table {
+      display: none;
+      width: 1100px;
+      height: 600px;
+      text-align: center;
+      margin: 10px auto;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    td {
+      width: 100px;
+    }
+
+    #btn-section {
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    var starbucks = {
+      't': 'starbucks'
+    };
+    var coffeebean = {
+      't': 'COFFEEBEAN'
+    };
+
+    $(document).ready(function () {
+      $('button').on('click', function () {
+        $('tr').filter(function (index) {
+          return index != 0;
+        }).remove();
+        switch (this.id) {
+          case 'btn':
+            getAll();
+            break;
+          case 'btn1':
+            getStart();
+            break;
+          case 'btn2':
+            getBean();
+            break;
+        }
+      });
+    });
+
+    function getAll() {
+      $.ajax({
+        type: "get",
+        url: "http://52.78.212.189:3000/all",
+        success: function (response) {
+          var coffeeList = JSON.parse(response).body;
+          console.log(coffeeList)
+          makeTable(coffeeList);
+          $('table').css('display', 'table');
+        }
+      });
+    }
+
+    function getStart() {
+      $.ajax({
+        type: "get",
+        url: "http://52.78.212.189:3000/coffee",
+        data: starbucks,
+        success: function (response) {
+          var coffeeList = JSON.parse(response).body;
+          console.log(coffeeList)
+          makeTable(coffeeList);
+          $('table').css('display', 'table');
+        }
+      });
+    }
+
+    function getBean() {
+      $.ajax({
+        type: "get",
+        url: "http://52.78.212.189:3000/coffee",
+        data: coffeebean,
+        success: function (response) {
+          var coffeeList = JSON.parse(response).body;
+          console.log(coffeeList)
+          makeTable(coffeeList);
+          $('table').css('display', 'table');
+        }
+      });
+    }
+
+    function makeTable(coffeeList) {
+      $.each(coffeeList, function () {
+        var $tr = $('<tr><td>' + this.type + '</td><td>' + this.NM + '</td><td>' + this.ADDRESS + '</td></tr>');
+        $('table').append($tr);
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="btn-section">
+    <button id="btn">전체 카페 불러오기</button>
+    <button id="btn1">스타벅스 불러오기</button>
+    <button id="btn2">커피빈 불러오기</button>
+  </div>
+  <table>
+    <tr>
+      <td>카페명</td>
+      <td>지점명</td>
+      <td>위치</td>
+    </tr>
+  </table>
+</body>
+
+</html>
