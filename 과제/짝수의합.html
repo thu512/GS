@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+  </style>
+
+  <script>
+    var num1 = null;
+    var num2 = null;
+    var sum = 0;
+    var cnt = 0;
+    while (1) {
+      num1 = window.prompt('첫번째 값을 입력하세요(1의 자리):');
+      if (num1 < 10) {
+        break;
+      }
+      alert('범위를 확인해주세요.');
+    }
+    while (1) {
+      num2 = window.prompt('두번째 값을 입력하세요(100의 자리):');
+      if (num2 >= 100) {
+        break;
+      }
+      alert('범위를 확인해주세요.');
+    }
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    for (var i = num1; i <= num2; i++) {
+      sum += i % 2 == 0 ? i : 0;
+      cnt += i % 2 == 0 ? 1 : 0;
+    }
+    var str1 = num1 + ' ~ ' + num2 + ' 사이의 짝수의 개수는 ' + cnt + '개 입니다.<br>';
+    var str2 = '짝수의 누적된 합은 ' + sum + '입니다.';
+    $(document).ready(function () {
+
+      $('div').html(str1 + str2);
+
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="info">
+
+  </div>
+
+</body>
+
+</html>
