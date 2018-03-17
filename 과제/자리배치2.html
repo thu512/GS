@@ -11,8 +11,8 @@
     }
 
     table {
-      width: 1100px;
-      height: 600px;
+      width: 100%;
+      height: 800px;
       text-align: center;
       margin: 10px auto;
       font-size: 20px;
@@ -30,90 +30,163 @@
       width: 100px;
     }
 
-    .bokdo{
-
+    .bokdo {
+      background-color: gray;
     }
-    .11{
-      
+
+    .ai {
+      background-color: pink !important;
+    }
+
+    ._11 {
+      background-color: yellow;
+    }
+
+    ._12 {
+      background-color: green;
     }
   </style>
 
   <script>
-    var _11=['강지혜','권용수','권혁재','김설한','김성경','김성곤','김성민','김준호','김현수','류도연','박지용','서고은','서유진','손성준','손지웅','신우철','엄유진','오은주','오태경','이경진','이상현'];
-    var _12=['박보미','이경화','김수진','유희수','박소현','조은솔','장진영','김윤지','채유진','최영롱','진민영','고하윤','강혜정','손혜성','송현석','신종욱','오병준','우연찬','위재원','은종현','이경민','이상훈','이융성','이인성','이종건','이창주','임혜성','장동주','정광수','정진','조국','조현우','주형진','차주현','최규효','최준우'];
-    
-    var row=null;
-    var col=null;
+    var _11 = ['강지혜11', '권용수11', '권혁재11', '김설한11', '김성경11', '김성곤11', '김성민11', '김준호11', '김현수11', '류도연11', '박지용11', '서고은11', '서유진11', '손성준11', '손지웅11', '신우철11', '엄유진11', '오은주11', '오태경11', '이경진11', '이상현11'];
+    var _12 = ['박보미12', '이경화12', '김수진12', '유희수12', '박소현12', '조은솔12', '장진영12', '김윤지12', '채유진12', '최영롱12', '진민영12', '고하윤12', '강혜정12', '손혜성12', '송현석12', '신종욱12', '오병준12', '우연찬12', '위재원12', '은종현12', '이경민12', '이상훈12', '이융성12', '이인성12', '이종건12', '이창주12', '임혜성12', '장동주12', '정광수12', '정진12', '조국12', '조현우12', '주형진12', '차주현12', '최규효12', '최준우12'];
+
+    var row = null;
+    var col = null;
     $(document).ready(function () {
       $('#create').on('click', function () {
-        row=$('#row').val();
-        col=$('#col').val();
-        
-        if(eval(row*(col-1)+1) >= 57){
+        row = $('#row').val();
+        col = $('#col').val();
+
+        if (eval(row * (col) + 1) >= 57 && (col % 2 == 0)) {
           $('tr').remove();
-          createSeat(row,col);
-          $('tr').each(function(){
-            if($(this).index() != 0 ){
-              
-              $(this).find('td').eq(parseInt(col/2)).addClass('bokdo').text('복도');
-            }else{
-              $(this).find('td').eq(parseInt(col/2)).addClass('11');
+
+          //테이블 생성
+          createSeat(row, col);
+
+          //1. 가운대 줄 복도, 맨뒤 AI, 복도기준 왼쪽 오른쪽 설정
+          $('tr').each(function (index) {
+            var trIndex = index;
+            if (trIndex != 0) {
+              $(this).find('td').eq(parseInt(col / 2)).addClass('bokdo').text('복도');
+            } else {
+              $(this).find('td').eq(parseInt(col / 2)).addClass('_11 ai');
             }
+            $(this).find('td').each(function (index) {
+              if (index < parseInt(col / 2)) {
+                $(this).addClass('L');
+              } else if (index > parseInt(col / 2)) {
+                $(this).addClass('R');
+              }
+            });
           });
 
-        }else{
+          //2. 왼쪽분단, 오른쪽분단에 11기자리, 12기자리 번갈아가며 배치
+          //    각 분단 마다 21명씩 먼저 배치 그 후 각 분단마다 12기 8명씩 배치
+          var count = 1;
+          var rLen = $('td.R').length;
+          var lLen = $('td.L').length;
+          for (var i = lLen - 1; i >= 0; i--) {
+            if (count > 20) {
+              for (var j = 0; j < 8; j++) {
+                $('td.L').eq(i - j).addClass('_12');
+              }
+              count = 1;
+              break;
+            }
+            if (i % 2 != 0) {
+              $('td.L').eq(i).addClass('_11');
+            } else {
+              $('td.L').eq(i).addClass('_12');
+            }
+            count++;
+          }
+          for (var i = rLen - 1; i >= 0; i--) {
+            if (count > 20) {
+              for (var j = 0; j < 8; j++) {
+                $('td.R').eq(i - j).addClass('_12');
+              }
+              count = 1;
+              break;
+            }
+            //각분단의 가로열이 홀수일때
+            //복도를 사이에 두고 같은기수가 앉지 못하게 하기위해서
+            if (parseInt(col / 2) % 2 != 0) {
+              if (i % 2 != 0) {
+                $('td.R').eq(i).addClass('_12');
+              } else {
+                $('td.R').eq(i).addClass('_11');
+              }
+            } else {
+              if (i % 2 != 0) {
+                $('td.R').eq(i).addClass('_11');
+              } else {
+                $('td.R').eq(i).addClass('_12');
+              }
+            }
+            count++;
+          }
+        } else {
           alert('범위를 확인해주세요.');
         }
-
-
-
       });
-      
 
+      $('#batch').on('click', function () {
+        //1. 11기, 12기 배열에 랜덤으로 인원 배치
+        var array11 = randomNum(21);
+        var array12 = randomNum(36);
+
+        //2. 클래스 11에 랜덤으로 섞인 배열 이름 순서대로 배치
+        //   클래스 12에 랜덤으로 섞인 배열 이름 순서대로 배치
+        $('._11').each(function (index) {
+          $(this).text(_11[array11[index]]);
+        });
+        $('._12').each(function (index) {
+          $(this).text(_12[array12[index]]);
+        });
+      });
     });
-    
-    function createSeat(row, col){
-      
-      for(var i=0; i<row; i++){
+
+    function createSeat(row, col) {
+      for (var i = 0; i < row; i++) {
         var $tr = $('<tr></tr>');
         $('table').append($tr);
       }
-      $('tr').each(function(){
-        for(var j=0; j<col; j++){
+      $('tr').each(function () {
+        for (var j = 0; j <= col; j++) {
           var $td = $('<td></td>');
           $(this).append($td);
         }
       });
-
     }
 
-    function randomNum(len){
-			var result = new Array(len);
-			var flag = new Array(len);
-			for(var i=0; i<flag.length; i++){
-				flag[i]=false;
-			}
-			var i=0;
-			while(!check()){
-				var value = parseInt(Math.random()*len);
-				if(flag[value]==false){
-					flag[value]=true;
-					result[i]=value;
-					i++;
-				}
-			}
+    function randomNum(len) {
+      var result = new Array(len);
+      var flag = new Array(len);
+      for (var i = 0; i < flag.length; i++) {
+        flag[i] = false;
+      }
+      var i = 0;
+      while (!check()) {
+        var value = parseInt(Math.random() * len);
+        if (flag[value] == false) {
+          flag[value] = true;
+          result[i] = value;
+          i++;
+        }
+      }
 
-			return result;
+      return result;
 
-			function check(){
-				for(var i=0; i<flag.length; i++){
-					if(!flag[i]){
-						return false;
-					}
-				}
-				return true;
-			}
-		}
+      function check() {
+        for (var i = 0; i < flag.length; i++) {
+          if (!flag[i]) {
+            return false;
+          }
+        }
+        return true;
+      }
+    }
   </script>
 </head>
 
@@ -127,7 +200,7 @@
     <button id="batch">자리배치</button>
   </div>
   <table>
-    
+
   </table>
 </body>
 
