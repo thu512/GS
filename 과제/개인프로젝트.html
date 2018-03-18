@@ -7,83 +7,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('section[data-type="background"]').each(function () {
-        var $bgobj = $(this);
-        console.log($bgobj);
-        $(window).scroll(function () {
-          var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
 
-          var coords = '50% ' + (yPos) + 'px';
-          $bgobj.css({
-            backgroundPosition: coords
-          });
-        });
-      });
-
-      $(function () {
-        var nav = $('.nav');
-        var lastScroll = 50;
-        $(window).scroll(function () {
-
-          var windowTop = $(this).scrollTop();
-          if (windowTop > lastScroll) {
-            nav.removeClass('is_fixed');
-          } else {
-            nav.addClass('is_fixed');
-          }
-          lastScroll = windowTop;
-        });
-      })
-
-      $('.des_main').each(function (index) {
-        if (index != 0) {
-          $(this).css('display', 'none');
-        }
-      });
-
-      $('button').on('click', function () {
-
-        if (this.id == 'left') {
-          leftMove();
-        } else if (this.id == 'right') {
-          rightMove();
-        }
-
-      })
-
-      function leftMove() {
-        var nextIndex = 0;
-        $('.des_main').each(function (index) {
-          if ($(this).css('display') == 'block') {
-            $(this).fadeOut("slow", function () {
-              $(this).css('display', 'none');
-              nextIndex = index == 0 ? 2 : index -= 1;
-              $('.des_main').eq(nextIndex).fadeIn('slow', function () {
-                $('.des_main').eq(nextIndex).css('display', 'block');
-              });
-            });
-          }
-        });
-      }
-
-      function rightMove() {
-        var nextIndex = 0;
-        $('.des_main').each(function (index) {
-          if ($(this).css('display') == 'block') {
-            $(this).fadeOut("slow", function () {
-              $(this).css('display', 'none');
-              nextIndex = index == 2 ? 0 : index += 1;
-              $('.des_main').eq(nextIndex).fadeIn('slow', function () {
-                $('.des_main').eq(nextIndex).css('display', 'block');
-              });
-            });
-          }
-        });
-      }
-    });
-  </script>
   <style>
     body {
       width: 100%;
@@ -148,13 +72,8 @@
       background-size: cover;
     }
 
-    #Design {
-      /* background: url(../img/i2_1.jpg) 50% 0 no-repeat fixed;
-      background-size: cover; */
-    }
-
     #Design article {
-      height: 900px;
+      height: 100%;
       position: absolute;
       text-align: center;
       width: 100%;
@@ -177,9 +96,17 @@
     }
 
     #des_main {
+
       width: 90%;
-      height: 1000px;
+      height: 100%;
       margin: 0 20px;
+    }
+
+    .des_main {
+
+
+      height: 780px;
+
     }
 
     button {
@@ -195,17 +122,41 @@
     }
 
     .des-main-txt {
-      height: 300px;
+      font-weight: 300;
       width: 70%;
       margin: 0 auto;
-      font-size: 15px;
-      font-weight: bold;
-      line-height: 150%;
+      font-size: 17px;
+      line-height: 160%;
     }
 
     .arrow-img {
       width: 20px;
       height: 20px;
+    }
+
+    #des_btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #des_btn ul {
+      display: inline-block;
+    }
+
+    #des_btn li {
+      display: inline;
+      float: left;
+      width: 4px;
+      height: 4px;
+      margin: 0 10px;
+      /* background-image: url(../images/unchecked-circle.png); */
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 100%;
+      background-color: #9b9b9b;
+    }
+
+    #des_btn li:first-child {
+      background-color: black;
     }
 
     #Performance {
@@ -221,17 +172,207 @@
     }
 
     #ux {
-      background: url(../images/bu.jpg) 50% 0 repeat fixed;
+      background: #fafafa 50% 0 no-repeat fixed;
     }
 
     #ux article {
-      height: 458px;
+      height: 100%;
       position: absolute;
       text-align: center;
-      top: 150px;
       width: 100%;
     }
+
+    #ux article h1 {
+      margin-top: 80px;
+      font-size: 50px;
+      font-weight: 100;
+    }
+
+    #ux_main {
+      position: relative;
+    }
+
+    #ux_main #contents {
+      position: absolute;
+      top: 25%;
+      left: 20%;
+      text-align: left !important;
+      line-height: 180%;
+    }
+
+    #ux_btn {
+      text-align: center;
+    }
+
+    #ux_btn ul {
+      display: inline-block;
+    }
+
+    #ux_btn ul li {
+      display: inline;
+      float: left;
+      width: 100px;
+      height: 30px;
+      list-style: none;
+      border-bottom: 1px solid gray;
+      color: gray;
+
+    }
+
+    #ux_btn ul li:hover {
+      color: blue;
+    }
+
+    #ux_btn a {
+      text-decoration: none;
+      height: 100%;
+
+    }
+
+    .clickedA {
+      transition: all 1s ease .1s;
+      padding-bottom: 10px;
+      border-bottom: 3px solid black;
+      color: black;
+    }
   </style>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('section[data-type="background"]').each(function () {
+        var $bgobj = $(this);
+        console.log($bgobj);
+        $(window).scroll(function () {
+          var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
+
+          var coords = '50% ' + (yPos) + 'px';
+          $bgobj.css({
+            backgroundPosition: coords
+          });
+        });
+      });
+
+      $(function () {
+        var nav = $('.nav');
+        var lastScroll = 50;
+        $(window).scroll(function () {
+
+          var windowTop = $(this).scrollTop();
+          if (windowTop > lastScroll) {
+            nav.removeClass('is_fixed');
+          } else {
+            nav.addClass('is_fixed');
+          }
+          lastScroll = windowTop;
+        });
+      })
+
+      $('.des_main').each(function (index) {
+        if (index != 0) {
+          $(this).css('display', 'none');
+        }
+      });
+
+      $('button').on('click', function () {
+
+        if (this.id == 'left') {
+          leftMove();
+        } else if (this.id == 'right') {
+          rightMove();
+        }
+
+      });
+      $('#des_btn li').on('click', function () {
+        move($(this).index());
+      })
+
+      $('.ux_video').each(function (index) {
+        if (index != 0) {
+          $(this).css('display', 'none');
+        }
+      });
+
+      $('#ux_btn li').on('click', function () {
+        console.log($(this));
+        changeVideo($(this).index());
+      });
+
+      function changeVideo(num) {
+        console.log('num: ' + num);
+        $('.ux_video').each(function () {
+          console.log($(this).index());
+          if ($(this).index() == num) {
+            // console.log($(this));
+            $(this).css('display', 'block');
+          } else {
+            // console.log($(this));
+            $(this).css('display', 'none');
+          }
+        });
+        $('#ux_btn li').each(function () {
+          if ($(this).index() == num) {
+            $(this).children('a').addClass('clickedA');
+          } else {
+            $(this).children('a').removeClass();
+          }
+        });
+      }
+
+      function move(idx) {
+        $('.des_main').each(function (index) {
+          if ($(this).css('display') == 'block') {
+            $(this).fadeOut("slow", function () {
+              $(this).css('display', 'none');
+              $('.des_main').eq(idx).fadeIn('slow', function () {
+                $('.des_main').eq(idx).css('display', 'block');
+              });
+              liControl(idx);
+            });
+          }
+        });
+      }
+
+      function leftMove() {
+        var nextIndex = 0;
+        $('.des_main').each(function (index) {
+          if ($(this).css('display') == 'block') {
+            $(this).fadeOut("slow", function () {
+              $(this).css('display', 'none');
+              nextIndex = index == 0 ? 2 : index -= 1;
+              $('.des_main').eq(nextIndex).fadeIn('slow', function () {
+                $('.des_main').eq(nextIndex).css('display', 'block');
+              });
+              liControl(nextIndex);
+            });
+          }
+        });
+      }
+
+      function rightMove() {
+        var nextIndex = 0;
+        $('.des_main').each(function (index) {
+          if ($(this).css('display') == 'block') {
+            $(this).fadeOut("slow", function () {
+              $(this).css('display', 'none');
+              nextIndex = index == 2 ? 0 : index += 1;
+              $('.des_main').eq(nextIndex).fadeIn('slow', function () {
+                $('.des_main').eq(nextIndex).css('display', 'block');
+              });
+              liControl(nextIndex);
+            });
+          }
+        });
+      }
+
+      function liControl(nextIndex) {
+        var $liList1 = $('#des_btn li');
+        $liList1.eq(nextIndex).css('background-color', 'black');
+        $liList1.filter(function (index) {
+          return index != nextIndex;
+        }).css('background-color', '#9b9b9b');
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -287,11 +428,75 @@
           </button>
         </div>
       </div>
-
+      <div id="des_btn">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </article>
   </section>
   <section id="ux" data-type="background" data-speed="10" class="pages">
-    <article>Simple Parallax Scroll</article>
+    <article>
+      <h1>직관적인 제스처로 더욱 쉬워진 사용성.</h1>
+      <div id="ux_main">
+
+        <div id="ux_video1" class="ux_video">
+          <div id="contents">
+            <p>아래에서 위로 스와이프 한 번이면
+              <br> 홈 화면으로 이동합니다.</p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_home/large.mp4">
+          </video>
+        </div>
+        <div id="ux_video2" class="ux_video">
+          <div id="contents">
+            <p>위로 스와이프한 후 잠깐 멈추면
+              <br>열려 있는 모든 앱이 나타납니다.</p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_multitask/large.mp4">
+          </video>
+        </div>
+        <div id="ux_video3" class="ux_video">
+          <div id="contents">
+            <p>아래로 스와이프하면 제어 센터가 바로
+              <br>열립니다. 제어 센터는 자신에 맞게
+              <br>커스터마이즈 할 수도 있죠.</p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_control_center/large.mp4">
+          </video>
+        </div>
+        <div id="ux_video4" class="ux_video">
+          <div id="contents">
+            <p>묻고 싶은 게 있을 때 측면 버튼을 길게
+              <br>눌러 Siri를 불러낼 수 있습니다.</p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_siri/large.mp4">
+          </video>
+        </div>
+      </div>
+      <div id="ux_btn">
+        <ul>
+          <li>
+            <a class="clickedA">홈</a>
+          </li>
+          <li>
+            <a>멀티태스킹</a>
+          </li>
+          <li>
+            <a>제어센터</a>
+          </li>
+          <li>
+            <a>Siri</a>
+          </li>
+        </ul>
+      </div>
+    </article>
   </section>
   <section id="Performance" data-type="background" data-speed="10" class="pages">
     <article>Simple Parallax Scroll</article>
