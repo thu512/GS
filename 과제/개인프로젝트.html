@@ -59,7 +59,7 @@
 
     section {
       min-height: 1000px;
-      height: 1000px;
+      height: 100%;
       margin: 0 auto;
       width: 100%;
       max-width: 1920px;
@@ -71,15 +71,17 @@
       background: url(../img/i1.png) 50% 0 no-repeat fixed;
       background-size: cover;
     }
+
     #Design {
       background: url(../img/White-bg.jpg) 50% 0 no-repeat fixed;
     }
+
     #Design article {
       height: 100%;
       position: absolute;
       text-align: center;
       width: 100%;
-      
+
     }
 
     #des_menu {
@@ -163,7 +165,9 @@
     }
 
     #Performance {
-      background: url(../images/lam2.jpg) 50% 0 repeat fixed;
+      background: black 50% 0 no-repeat fixed;
+      background-size: cover;
+      position: relative;
     }
 
     #Performance article {
@@ -172,6 +176,22 @@
       text-align: center;
       top: 150px;
       width: 100%;
+    }
+
+    #video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -100px;
+      margin-top: -100px;
+    }
+
+    #faceid {
+
+      width: 200px;
+      height: 200px;
+
+      border-radius: 10px;
     }
 
     #ux {
@@ -242,18 +262,34 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
-      $('section[data-type="background"]').each(function () {
+      $('section[data-type="background"]').each(function (index) {
         var $bgobj = $(this);
         console.log($bgobj);
-        $(window).scroll(function () {
-          var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
+        if (index != 3) {
+          $(window).scroll(function () {
+            var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
 
-          var coords = '50% ' + (yPos) + 'px';
-          $bgobj.css({
-            backgroundPosition: coords
+            var coords = '50% ' + (yPos) + 'px';
+            $bgobj.css({
+              backgroundPosition: coords
+            });
           });
-        });
+        }
+
       });
+
+      $(document).scroll(function () {
+        // if($(this).scrollTop == ){
+
+        // }
+
+        if ($(window).scrollTop() >= 3100) {
+          var $video = document.getElementById("faceid");
+          $video.play();
+        }
+
+      });
+      
 
       $(function () {
         var nav = $('.nav');
@@ -502,6 +538,12 @@
     </article>
   </section>
   <section id="Performance" data-type="background" data-speed="10" class="pages">
+    <div id="video">
+      <video id="faceid">
+        <source src="../img/faceid.mov">
+      </video>
+    </div>
+
     <article>Simple Parallax Scroll</article>
   </section>
 
