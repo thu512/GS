@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+    body {
+      font-size: 9pt;
+
+    }
+
+    #panel {
+      width: 600px;
+      height: 300px;
+      border: 1px solid #999;
+      position: relative;
+    }
+
+    .bar {
+      position: absolute;
+      left: 50px;
+      top: 190px;
+      width: 500px;
+      height: 20px;
+
+      background: #F30;
+    }
+
+    #fish {
+      position: absolute;
+      left: 50px;
+      top: 120px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      // 물고기 노드 구하기.
+      var $fish = $("#fish");
+
+      // 버튼에 이벤트 걸기.
+      $("#move").click(function () {
+        // 물고기 위치 값 구하기
+        console.log($('#fish').position())
+        var currentX = $('#fish').position().left + 10;
+        // 위치 값 설정하기
+        $fish.css("left", currentX);
+      });
+
+    })
+
+  </script>
+</head>
+
+<body>
+  <img id="fish" src="../images/fish1.png">
+  <button id="move">이동</button>
+</body>
+
+</html>

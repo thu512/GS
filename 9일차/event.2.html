@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+    #parent{
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    #child{
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      margin: 100px;
+    }
+  </style>
+
+  <script>
+
+    $(document).ready(function () {
+      $('#parent').on('mouseenter', function () {
+        console.log('parent mouseenter');
+      });
+      
+      $('#parent').on('mouseleave', function () {
+        console.log('parent mouseleave');
+      });
+      $('#child').on('mouseenter', function () {
+        console.log('child mouseenter');
+      });
+      
+      $('#child').on('mouseleave', function () {
+        console.log('child vmouseleave');
+      });
+      console.log(parseInt(parseInt('7')/2));
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="parent">
+    parent
+    <div id="child">child</div>
+  </div>
+</body>
+
+</html>

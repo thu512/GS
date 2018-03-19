@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+  </style>
+
+  <script>
+
+    $(document).ready(function () {
+      $('#btn').one('click', function () {
+        alert('버튼이 눌렸습니다.');
+      });
+      $('#btn').on('mouseover', function () {
+        alert('mouseover.');
+      });
+      $('#off').on('click', function () {
+        // $('#btn').off('click');
+        
+        // 모든이벤트제거
+        $('#btn').off();
+        
+      });
+      
+      $('#a').on('click',function(e){
+        console.log(e.ctrlKey);
+        if(!e.ctrlKey){
+          e.preventDefault();
+        }
+        
+      })
+      
+    });
+
+  </script>
+</head>
+
+<body>
+  <button id="btn">버튼</button>
+  <button id="off">버튼 이벤트 제거</button>
+  <a id="a" href="https://www.naver.com"> 이동 </a>
+</body>
+
+</html>
