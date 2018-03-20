@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>미션</title>
+
+<style>
+
+    * {
+        margin:0;
+        padding:0;
+    }
+    .wrap {
+        margin:50px;
+    }
+
+    #prev, #next {
+        width:80px;
+        height:40px;
+    }
+
+    div.banner {
+       margin-top:10px;
+       width:260px;
+       height:166px;
+       border:1px solid #000;
+       position: relative;
+       overflow: hidden;
+    }
+
+    div.banner-container{
+        width:2600px;  /* 260*5 */
+        position:absolute;
+        left:0;
+        top:0;
+    }
+
+    div.banner-container img{
+        display: block;
+        float:left;
+        left:0;
+        top:0;
+        width:260px;
+    }
+
+</style>
+
+    <script type="text/javascript"  src="libs/jquery-1.11.0.min.js"> </script>
+    <script>
+        $(document).ready(function(){
+          var $banner = $('.banner-container');
+          var bannerlength = $banner.find('img').length;
+          var bannerwidth = $('.banner').width();
+          var currentIndex = 0;
+
+          function showImage(index) {
+            var left = -(index * bannerwidth);
+            $banner.css('left', left);
+          }
+          $('#prev').on('click', function() {
+            currentIndex--;
+            if (currentIndex < 0) {
+              currentIndex = bannerlength - 1;
+            }
+            showImage(currentIndex);
+          });
+
+          $('#next').on('click', function() {
+            currentIndex++;
+            if (currentIndex >= bannerlength) {
+              currentIndex = 0;
+            }
+            showImage(currentIndex);
+          });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+        <div class="banner">
+            <div class="banner-container">
+                <img src="banners/1.png" >
+                <img src="banners/2.png" >
+                <img src="banners/3.png" >
+                <img src="banners/4.png" >
+                <img src="banners/5.png" >
+                <img src="banners/1.png" >
+                <img src="banners/2.png" >
+                <img src="banners/3.png" >
+                <img src="banners/4.png" >
+                <img src="banners/5.png" >
+            </div>
+        </div>
+    </div>
+</body>
+</html>

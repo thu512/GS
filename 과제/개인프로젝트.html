@@ -55,6 +55,7 @@
       position: fixed;
       top: 0;
       left: 0;
+      
     }
 
     section {
@@ -150,7 +151,7 @@
 
     #des_btn li {
       display: inline-block;
-      /* float: left; */
+      float: left;
       width: 4px;
       height: 4px;
       margin: 0 10px;
@@ -162,36 +163,6 @@
 
     #des_btn li:first-child {
       background-color: black;
-    }
-
-    #Performance {
-      background: black 50% 0 no-repeat fixed;
-      background-size: cover;
-      position: relative;
-    }
-
-    #Performance article {
-      height: 458px;
-      position: absolute;
-      text-align: center;
-      top: 150px;
-      width: 100%;
-    }
-
-    #video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: -100px;
-      margin-top: -100px;
-    }
-
-    #faceid {
-
-      width: 200px;
-      height: 200px;
-
-      border-radius: 10px;
     }
 
     #ux {
@@ -258,6 +229,34 @@
       border-bottom: 2px solid black;
       color: black;
     }
+
+    #Performance {
+      background: black 50% 0 no-repeat fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    #Performance article {
+      height: 458px;
+      position: absolute;
+      text-align: center;
+      top: 150px;
+      width: 100%;
+    }
+
+    #video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -100px;
+      margin-top: -40px;
+    }
+
+    #faceid {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+    }
   </style>
 
   <script type="text/javascript">
@@ -279,32 +278,26 @@
       });
 
       $(document).scroll(function () {
-        // if($(this).scrollTop == ){
-
-        // }
-
         if ($(window).scrollTop() >= 3100) {
           var $video = document.getElementById("faceid");
           $video.play();
         }
-
       });
-      
 
-      $(function () {
-        var nav = $('.nav');
-        var lastScroll = 50;
-        $(window).scroll(function () {
 
-          var windowTop = $(this).scrollTop();
-          if (windowTop > lastScroll) {
-            nav.removeClass('is_fixed');
-          } else {
-            nav.addClass('is_fixed');
-          }
-          lastScroll = windowTop;
-        });
-      })
+
+      var nav = $('.nav');
+      var lastScroll = 50;
+      $(window).scroll(function () {
+        var windowTop = $(this).scrollTop();
+        if (windowTop > lastScroll) {
+          nav.removeClass('is_fixed');
+        } else {
+          nav.addClass('is_fixed');
+        }
+        lastScroll = windowTop;
+      });
+
 
       $('.des_main').each(function (index) {
         if (index != 0) {
@@ -544,7 +537,9 @@
       </video>
     </div>
 
-    <article>Simple Parallax Scroll</article>
+    <article>
+
+    </article>
   </section>
 
 

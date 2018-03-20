@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <script type="text/javascript"  src="../libs/jquery.easing.1.3.js"> </script>
+  <style>
+  </style>
+
+  <script>
+
+    $(document).ready(function () {
+      $('#show').on('click',function(){
+        // $('#fish').show({
+        //   duration:2000,
+        //   easing:'easeOutBounce',
+        //   done:function(){
+        //     alert('끝');
+        //   }
+        // });
+        $('#fish').fadeIn(2000);
+      })
+      $('#hidden').on('click',function(){
+        // $('#fish').hide({
+        //   duration:2000,
+        //   easing:'easeOutBounce'
+        // },function(){
+
+        // });
+        $('#fish').fadeOut(2000);
+      })
+    });
+
+  </script>
+</head>
+
+<body>
+  
+  <button id="show">보이기</button>
+  <button id="hidden">숨김</button>
+  <img id="fish" src="../images/fish1.png">
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
