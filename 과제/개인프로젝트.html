@@ -19,7 +19,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 10;
+      z-index: 100;
       margin-bottom: 100px;
       height: 50px;
       background: rgba(0, 0, 0, 0.4);
@@ -55,7 +55,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      
+
     }
 
     section {
@@ -230,32 +230,115 @@
       color: black;
     }
 
-    #Performance {
-      background: black 50% 0 no-repeat fixed;
+    #feature {
+      background: url(../img/iPhone.jpg) 50% 0 no-repeat fixed;
       background-size: cover;
       position: relative;
     }
 
-    #Performance article {
-      height: 458px;
+    #feature article {
+      width: 600px;
+      height: 600px;
       position: absolute;
-      text-align: center;
-      top: 150px;
-      width: 100%;
+
+      top: 50%;
+      left: 50%;
+      margin-left: -300px;
+      margin-top: -300px;
+      border-radius: 10px;
+      
     }
 
+    .f {
+      position: absolute;
+      background-size: 300px 300px;
+      width: 300px;
+      height: 300px;
+      border-radius: 10px;
+      display: none;
+    }
+    #f1 {
+      background-image: url(../img/oled.jpg);
+      
+      top: 0;
+      left: 0;
+    }
+    #f1:hover{
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size:600px 600px;
+      transition: all 1s ease .1s;
+    }
+    #f2 {
+      background-image: url(../img/페이스아이디.jpg);
+      top: 0;
+      left: 50%;
+    }
+    #f2:hover{
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
+    #f3 {
+      background-image: url(../img/무선충전.jpg);
+      top: 50%;
+      left: 0;
+    }
+    #f3:hover{
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
+    #f4 {
+      background-image: url(../img/방수.jpg);
+      top: 50%;
+      left: 50%;
+    }
+    #f4:hover{
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
     #video {
       position: absolute;
       top: 50%;
       left: 50%;
-      margin-left: -100px;
-      margin-top: -40px;
+      margin-left: -90px;
+      margin-top: -100px;
+      z-index: 10;
     }
 
     #faceid {
       width: 200px;
       height: 200px;
       border-radius: 10px;
+    }
+
+    #hold{
+      position: absolute;
+      top: 40%;
+      right: 5%;
+      background-color: black;
+      border-radius: 5px;
+      width: 10px;
+      height: 50px;
+    }
+    #footer {
+      width: 100%;
+      height: 100px;
     }
   </style>
 
@@ -276,15 +359,24 @@
         }
 
       });
-
-      $(document).scroll(function () {
-        if ($(window).scrollTop() >= 3100) {
-          var $video = document.getElementById("faceid");
-          $video.play();
-        }
+      var $video = $('#faceid').get(0);
+      $('#faceid').on('click', function () {
+        
+        $video.play();
+        $video.onended = function () {
+          // $('.f').css('display','block');
+          // $('#video').css('z-index',0);
+          $('#video').fadeOut();
+          $('.f').fadeIn();
+          
+        };
       });
 
-
+      $('#hold').on('click',function(){
+        $('#video').fadeIn();
+        $('.f').fadeOut();
+        $video.load();
+      });
 
       var nav = $('.nav');
       var lastScroll = 50;
@@ -421,7 +513,7 @@
           <a href="#ux" class="menu-font">UX</a>
         </li>
         <li>
-          <a href="#Performance" class="menu-font">Performance</a>
+          <a href="#Performance" class="menu-font">Feature</a>
         </li>
 
       </ul>
@@ -530,7 +622,7 @@
       </div>
     </article>
   </section>
-  <section id="Performance" data-type="background" data-speed="10" class="pages">
+  <section id="feature" data-type="background" data-speed="10" class="pages">
     <div id="video">
       <video id="faceid">
         <source src="../img/faceid.mov">
@@ -538,10 +630,18 @@
     </div>
 
     <article>
-
+      <div id="f1" class="f"></div>
+      <div id="f2" class="f"></div>
+      <div id="f3" class="f"></div>
+      <div id="f4" class="f"></div>
+      
     </article>
+    <div id="hold"></div>
   </section>
 
+  <footer id="footer">
+
+  </footer>
 
 </body>
 
