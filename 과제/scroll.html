@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+
+  <style>
+    body{
+      background-color: black;
+      height: 2000px;
+    }
+    #container {
+      width: 100%;
+      height: 720px;
+    
+      
+      /* background-color: black;
+       */
+       background: url(../img/bg.png);
+       /* background-position: center center; */
+       background-size: contain;
+    }
+
+    #box {
+      width: 100%;
+      height: 100%;
+      background: url(../img/bg.png);
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', function () {
+      var box = document.getElementById('container'),
+        docHeight = document.documentElement.offsetHeight;
+      console.log('docHeight: '+docHeight);
+      window.addEventListener('scroll', function () {
+        // normalize scroll position as percentage
+        var scrolled = scrollY+100 ,
+          transformValue = 'scale(' + (scrolled/100) + ')';
+          console.log('window.innerHeight: '+window.innerHeight);
+          console.log('window.scrollY: '+window.scrollY);
+          console.log('scrolled: '+scrolled);
+          
+          
+        box.style.WebkitTransform = transformValue;
+        box.style.MozTransform = transformValue;
+        box.style.OTransform = transformValue;
+        box.style.transform = transformValue;
+
+      }, false);
+
+    }, false);
+
+  </script>
+
+</head>
+
+<body>
+  <div id="container">
+    <!-- <div id="box"></div> -->
+  </div>
+
+</body>
+
+</html>
