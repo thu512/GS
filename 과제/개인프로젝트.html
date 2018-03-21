@@ -6,7 +6,7 @@
   <title>아이폰X</title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
   <style>
     body {
@@ -92,13 +92,13 @@
     #des_left {
       position: absolute;
       top: 50%;
-      left: 10px;
+      left: 30px;
     }
 
     #des_right {
       position: absolute;
       top: 50%;
-      right: 10px;
+      right: 30px;
     }
 
     #des_main {
@@ -136,8 +136,8 @@
     }
 
     .arrow-img {
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
     }
 
     #des_btn {
@@ -246,7 +246,7 @@
       margin-left: -300px;
       margin-top: -300px;
       border-radius: 10px;
-      
+
     }
 
     .f {
@@ -257,25 +257,29 @@
       border-radius: 10px;
       display: none;
     }
+
     #f1 {
       background-image: url(../img/oled.jpg);
-      
+
       top: 0;
       left: 0;
     }
-    #f1:hover{
+
+    #f1:hover {
       width: 600px;
       height: 600px;
       z-index: 10;
-      background-size:600px 600px;
+      background-size: 600px 600px;
       transition: all 1s ease .1s;
     }
+
     #f2 {
       background-image: url(../img/페이스아이디.jpg);
       top: 0;
       left: 50%;
     }
-    #f2:hover{
+
+    #f2:hover {
       top: 0;
       left: 0;
       width: 600px;
@@ -284,12 +288,14 @@
       background-size: 600px 600px;
       transition: all 1s ease .1s;
     }
+
     #f3 {
       background-image: url(../img/무선충전.jpg);
       top: 50%;
       left: 0;
     }
-    #f3:hover{
+
+    #f3:hover {
       top: 0;
       left: 0;
       width: 600px;
@@ -298,12 +304,14 @@
       background-size: 600px 600px;
       transition: all 1s ease .1s;
     }
+
     #f4 {
       background-image: url(../img/방수.jpg);
       top: 50%;
       left: 50%;
     }
-    #f4:hover{
+
+    #f4:hover {
       top: 0;
       left: 0;
       width: 600px;
@@ -312,6 +320,7 @@
       background-size: 600px 600px;
       transition: all 1s ease .1s;
     }
+
     #video {
       position: absolute;
       top: 50%;
@@ -327,7 +336,58 @@
       border-radius: 10px;
     }
 
-    #hold{
+    .modalImg {
+      width: 380px;
+      height: 650px;
+    }
+
+    .mask {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      background: #000;
+      opacity: .5;
+      filter: alpha(opacity=50);
+    }
+
+    .modalLayer {
+      display: none;
+      position: relative;
+    }
+
+    .modalLayer .modalContent {
+      width: 1200px;
+      height: 650px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 11;
+      background: gray;
+      /* background: url(../img/bg.png); */
+      /* background-position: center; */
+    }
+
+    #cover {
+      
+      background: url(../img/bg.png);
+      background-position: center;
+      z-index: 12;
+    }
+
+    .modalLayer .modalContent button {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      cursor: pointer;
+      margin-left: -26px;
+    }
+
+    #hold {
       position: absolute;
       top: 40%;
       right: 5%;
@@ -335,15 +395,61 @@
       border-radius: 5px;
       width: 10px;
       height: 50px;
+
     }
+
     #footer {
       width: 100%;
       height: 100px;
+      background-color: #9f9f9f;
     }
   </style>
 
   <script type="text/javascript">
     $(document).ready(function () {
+      $('#cover').css({
+        width: $(window).width(),
+        height: $(window).height()
+      })
+      scaleBg();
+      $(window).scroll(function(){
+
+      });
+
+      var modalLayer = $(".modalLayer");
+      var modalLink = $(".modalLink");
+      var modalCont = $(".modalContent");
+      var marginLeft = modalCont.outerWidth() / 2;
+      var marginTop = modalCont.outerHeight() / 2;
+      modalLink.click(function () {
+        if ($(this).index() == 0) {
+          $('#m1').fadeIn("slow");
+        } else if ($(this).index() == 1) {
+          $('#m2').fadeIn("slow");
+        } else if ($(this).index() == 2) {
+          $('#m3').fadeIn("slow");
+        } else if ($(this).index() == 3) {
+          $('#m4').fadeIn("slow");
+        }
+
+        modalCont.css({ "margin-top": -marginTop, "margin-left": -marginLeft });
+        $(this).blur();
+        $(".modalContent > a").focus();
+        return false;
+      });
+
+      $(".modalContent > button").click(function () {
+        modalLayer.fadeOut("slow");
+        modalLink.focus();
+      });
+
+
+      function scaleBg() {
+        $('#cover').effect( "scale",{mode : "hide"},1500 ,function(){
+          $('#cover').remove();
+        });
+      }
+
       $('section[data-type="background"]').each(function (index) {
         var $bgobj = $(this);
         console.log($bgobj);
@@ -368,11 +474,13 @@
           // $('#video').css('z-index',0);
           $('#video').fadeOut();
           $('.f').fadeIn();
-          
+
         };
       });
 
-      $('#hold').on('click',function(){
+      $('#hold').on('click', function () {
+        modalLayer.fadeOut("slow");
+        modalLink.focus();
         $('#video').fadeIn();
         $('.f').fadeOut();
         $video.load();
@@ -520,6 +628,7 @@
     </div>
   </div>
   <section id="main" data-type="background" data-speed="10" class="pages">
+      <div id="cover"></div>
   </section>
   <section id="Design" data-type="background" data-speed="10" class="pages">
     <article>
@@ -630,12 +739,49 @@
     </div>
 
     <article>
-      <div id="f1" class="f"></div>
-      <div id="f2" class="f"></div>
-      <div id="f3" class="f"></div>
-      <div id="f4" class="f"></div>
-      
+      <div id="f1" class="f modalLink"></div>
+      <div id="f2" class="f modalLink"></div>
+      <div id="f3" class="f modalLink"></div>
+      <div id="f4" class="f modalLink"></div>
+
     </article>
+
+
+    <div class="modalLayer" id="m1">
+      <div class="modalContent">
+        
+        <div id="oled">
+          <img class="modalImg" src="../img/oled1.jpg">
+        </div>
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div class="modalLayer" id="m2">
+      <div class="modalContent">
+
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div class="modalLayer" id="m3">
+      <div class="modalContent">
+
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div class="modalLayer" id="m4">
+      <div class="modalContent">
+
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
     <div id="hold"></div>
   </section>
 

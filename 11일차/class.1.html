@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+  </style>
+
+  <script>
+    (function ($) {
+      $.addComma = function (value) {
+        var data = value + '';
+        var aryResult = data.split('');
+        var startIndex = aryResult.length - 3;
+        for (var i = startIndex; i > 0; i -= 3) {
+          aryResult.splice(i, 0, ',');
+        }
+        return aryResult.join('');
+      }
+    })(jQuery);
+
+    (function ($) {
+      $.fn.redColor = function () {
+        this.each(function (index) {
+          $(this).css('border', '1px solid red');
+        });
+        return this;
+      };
+      $.fn.removeLi = function () {
+        this.each(function (index) {
+          $(this).delay(index * 1000).animate({
+            height: 0
+          }, 500, function () {
+            $(this).remove();
+          })
+        })
+
+        return this;
+      };
+    })(jQuery);
+
+
+
+    $(document).ready(function () {
+      $('ul li').removeLi();
+    });
+  </script>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+
+  </ul>
+
+</body>
+
+</html>

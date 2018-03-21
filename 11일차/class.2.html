@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <style>
+  </style>
+
+  <script>
+    (function ($) {
+      function SpreadDiv(option) {
+        this.$plusbtn = $(option.plusid);
+        this.$minusbtn = $(option.minusid);
+        this.$speaddiv = option.speadid;
+        this.initEvent();
+      }
+      SpreadDiv.prototype.initEvent = function () {
+        var _this = this;
+        this.$plusbtn.on('click', function () {
+          _this.$speaddiv.show().animate({
+            height: 200
+          }, 500, function () {
+          });
+        });
+        this.$minusbtn.on('click', function () {
+          _this.$speaddiv.animate({
+            height: 0
+          }, 500, function () {
+            _this.$speaddiv.hide();
+          });
+        });
+      }
+      $.fn.spreadPanel = function(option){
+        this.each(function(index){
+          var panel = new SpreadDiv({
+            plusid: option.plusid,
+            minusid: option.minusid,
+            speadid: $(this)
+          });
+        });
+        return this;
+      }
+    })(jQuery);
+
+    $(document).ready(function () {
+      $('#spdv').spreadPanel({
+        plusid:'#plus',
+        minusid:'#minus'
+      });
+      // $('#minus').on('click', function () {
+      //   $('#spdv').animate({
+      //     height: 0
+      //   }, 500, function () {
+      //     $('#spdv').hide();
+      //   });
+      // });
+
+      // $('#plus').on('click', function () {
+      //   $('#spdv').show().animate({
+      //     height: '200px'
+      //   }, 500, function () {
+
+      //   });
+      // });
+    });
+  </script>
+</head>
+
+<body>
+  <button id="plus">+</button>
+  <button id="minus">-</button>
+  <div id="spdv">
+    asnkflndkjvnekjrsnkjrengjnfjwenfkjwnekjfwe
+  </div>
+
+</body>
+
+</html>

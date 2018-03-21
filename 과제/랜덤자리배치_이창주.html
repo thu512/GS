@@ -91,17 +91,17 @@
 			}
 			var ranWoman=randomNum(13);
 			for(var i=1; i<=13; i++){
-				var cls=document.getElementsByClassName(i);
-				var seat=parseInt(Math.random()*(cls.length));
-				cls[seat].innerHTML=woman[ranWoman[i-1]];
-				cls[seat].style.backgroundColor='pink';
-				num[cls[seat].id]=true;
+				var $cls=$('.'+i);
+				var seat=parseInt(Math.random()*($cls.length));
+				$cls.eq(seat).html(woman[ranWoman[i-1]]);
+				$cls.eq(seat).css('background-color','pink');
+				num[$cls.eq(seat).attr('id')]=true;
 			}
 			var ranMan=randomNum(37);
 			var j=0;
 			for(var i=1; i<num.length; i++){
 				if(!num[i]){
-					document.getElementById(i).innerHTML=man[ranMan[j]];
+					$('#'+i).html(man[ranMan[j]]);
 					j++;
 				}
 			}
@@ -116,9 +116,11 @@
 			$('#btn1').on('click',function(){
 				var cnt=0;
 				id=setInterval(batchPeople,100);
+				$('#btn1').attr('disabled','disabled');
 			});
 			$('#btn2').on('click', function () {
 				clearInterval(id);
+				$('#btn1').attr('disabled',false);
 			});
 		});
 	</script>

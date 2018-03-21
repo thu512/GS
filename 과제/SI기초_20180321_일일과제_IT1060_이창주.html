@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>자리배치</title>
+	<style type="text/css">
+		table {
+			width: 1100px;
+			height: 600px;
+			text-align: center;
+			margin: 10px auto;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		td {
+			width: 100px;
+		}
+
+		#ba {
+			text-align: center;
+		}
+
+		.btn {
+
+			width: 110px;
+			height: 60px;
+			margin: 20px auto;
+			color: white;
+			background-color: #FFEAEA;
+			font-weight: bold;
+			font-size: 30px;
+		}
+
+		.btn:hover,
+		.btn:focus {
+			animation-duration: 3s;
+			animation-name: rainbowLink;
+			animation-iteration-count: infinite;
+		}
+
+		@keyframes rainbowLink {
+			0% {
+				color: #ff2a2a;
+			}
+			15% {
+				color: #ff7a2a;
+			}
+			30% {
+				color: #ffc52a
+			}
+			45% {
+				color: #43ff2a;
+			}
+			60% {
+				color: #2a89ff;
+			}
+			75% {
+				color: #202082;
+			}
+			90% {
+				color: #6b2aff;
+			}
+			100% {
+				color: #e82aff;
+			}
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+	<script type="text/javascript">
+		(function ($) {
+			function Batch(option) {
+				this.man = option.man;
+				this.woman = option.woman;
+				this.$gobtn = $(option.gobtnid);
+				this.$stopbtn = $(option.stopbtnid);
+				this.initEvent();
+			}
+			Batch.prototype.initEvent = function () {
+				var id = null;
+				var _this = this;
+				this.$gobtn.on('click', function () {
+					id = setInterval(_this.batchPeople, 100);
+					_this.$gobtn.attr('disabled', 'disabled');
+				});
+				this.$stopbtn.on('click', function () {
+					clearInterval(id);
+					_this.$gobtn.attr('disabled', false);
+				});
+			}
+			Batch.prototype.batchPeople = function () {
+				function randomNum(len) {
+					var result = new Array(len);
+					var flag = new Array(len);
+					for (var i = 0; i < flag.length; i++) {
+						flag[i] = false;
+					}
+					var i = 0;
+					while (!check()) {
+						var value = parseInt(Math.random() * len);
+						if (flag[value] == false) {
+							flag[value] = true;
+							result[i] = value;
+							i++;
+						}
+					}
+
+					return result;
+
+					function check() {
+						for (var i = 0; i < flag.length; i++) {
+							if (!flag[i]) {
+								return false;
+							}
+						}
+						return true;
+					};
+				};
+
+				function clear() {
+					$('td').css('background-color', 'white');
+				};
+
+				clear();
+				var num = new Array(51);
+				for (var i = 1; i < num.length; i++) {
+					num[i] = false;
+				}
+				var ranWoman = randomNum(13);
+				for (var i = 1; i <= 13; i++) {
+					var $cls = $('.' + i);
+					var seat = parseInt(Math.random() * ($cls.length));
+					$cls.eq(seat).html(this.woman[ranWoman[i - 1]]);
+					$cls.eq(seat).css('background-color', 'pink');
+					num[$cls.eq(seat).attr('id')] = true;
+				}
+				var ranMan = randomNum(37);
+				var j = 0;
+				for (var i = 1; i < num.length; i++) {
+					if (!num[i]) {
+						$('#' + i).html(this.man[ranMan[j]]);
+						j++;
+					}
+				}
+			};
+
+			$.fn.randomBatch = function (option) {
+				this.each(function (index) {
+					var batch = new Batch({
+						man: option.man,
+						woman: option.woman,
+						gobtnid: option.gobtnid,
+						stopbtnid: option.stopbtnid
+					});
+				});
+				return this;
+			};
+		})(jQuery);
+
+		var woman = ['강혜정', '고하윤', '김수진', '김윤지', '박보미', '박소현', '유희수', '이경화', '장진영', '조은솔', '진민영', '채유진', '최영롱'];
+		var man = ['김동범', '김민재', '김종주', '김주승', '김준혁', '김진우', '김효상', '남동길', '노종범', '박민주', '백기반', '성동원', '손원락', '손혜성', '송현석', '신종욱', '오병준', '우연찬', '위재원', '은종현', '이경민', '이상훈', '이융성', '이인성', '이종건', '이창주', '임혜성', '장동주', '정광수', '정진', '조국', '조현우', '주형진', '차주현', '최규효', '최준우', '허빛찬샘'];
+
+		$(document).ready(function () {
+			$(document).randomBatch({
+				man: man,
+				woman: woman,
+				gobtnid: '#btn1',
+				stopbtnid: '#btn2'
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<!-- 8x9 -->
+	<table>
+		<tr>
+			<td colspan="2"></td>
+			<td id="1" class="1"></td>
+			<td id="2" class="1"></td>
+			<td id="bocdo" rowspan="7"></td>
+			<td colspan="4"></td>
+		</tr>
+		<tr>
+			<td id="3" class="2"></td>
+			<td id="4" class="2"></td>
+			<td id="5" class="2"></td>
+			<td id="6" class="2"></td>
+			<td id="7" class="3"></td>
+			<td id="8" class="3"></td>
+			<td id="9" class="3"></td>
+			<td id="10" class="3"></td>
+		</tr>
+		<tr>
+			<td id="11" class="4"></td>
+			<td id="12" class="4"></td>
+			<td id="13" class="4"></td>
+			<td id="14" class="4"></td>
+			<td id="15" class="5"></td>
+			<td id="16" class="5"></td>
+			<td id="17" class="5"></td>
+			<td id="18" class="5"></td>
+		</tr>
+		<tr>
+			<td id="19" class="6"></td>
+			<td id="20" class="6"></td>
+			<td id="21" class="6"></td>
+			<td id="22" class="6"></td>
+			<td id="23" class="7"></td>
+			<td id="24" class="7"></td>
+			<td id="25" class="7"></td>
+			<td id="26" class="7"></td>
+		</tr>
+		<tr>
+			<td id="27" class="8"></td>
+			<td id="28" class="8"></td>
+			<td id="29" class="8"></td>
+			<td id="30" class="8"></td>
+			<td id="31" class="9"></td>
+			<td id="32" class="9"></td>
+			<td id="33" class="9"></td>
+			<td id="34" class="9"></td>
+		</tr>
+		<tr>
+			<td id="35" class="10"></td>
+			<td id="36" class="10"></td>
+			<td id="37" class="10"></td>
+			<td id="38" class="10"></td>
+			<td id="39" class="11"></td>
+			<td id="40" class="11"></td>
+			<td id="41" class="11"></td>
+			<td id="42" class="11"></td>
+		</tr>
+		<tr>
+			<td id="43" class="12"></td>
+			<td id="44" class="12"></td>
+			<td id="45" class="12"></td>
+			<td id="46" class="12"></td>
+			<td id="47" class="13"></td>
+			<td id="48" class="13"></td>
+			<td id="49" class="13"></td>
+			<td id="50" class="13"></td>
+		</tr>
+		<tr>
+			<td colspan="9">
+				<span>스크린</span>
+			</td>
+		</tr>
+	</table>
+	<div id="ba">
+		<input id="btn1" class="btn" type="button" value="GO!">
+		<input id="btn2" class="btn" type="button" value="Stop!">
+	</div>
+
+</body>
+
+</html>

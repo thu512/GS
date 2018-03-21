@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+    <style>
+    button {
+      border: 1px solid gray;
+      background-color: white;
+      width: 20px;
+      height: 20px;
+    }
+    div {
+      border: 1px solid gray;
+      width: 400px;
+      height: 200px;
+    }
+    </style>
+    <script type="text/javascript"  src="libs/jquery-1.11.0.min.js"> </script>
+    <script type="text/javascript"  src="libs/spreaddiv.js"> </script>
+    <script>
+    $(document).ready(function(){
+      $('#spreaddivs').spreadPanel({
+        plusid: '#plus',
+        minusid: '#minus'
+      });
+      $('#spreaddivs2').spreadPanel({
+        plusid: '#plus2',
+        minusid: '#minus2'
+      });
+    });
+    </script>
+  </head>
+  <body>
+  <button id="plus">+</button> <button id="minus">-</button>
+  <div id="spreaddivs">이득영만세.GSITM만세</div>
+  <br>
+
+  <button id="plus2">+</button> <button id="minus2">-</button>
+  <div id="spreaddivs2">이득영만세.GSITM만세</div>
+  </body>
+</html>
