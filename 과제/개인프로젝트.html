@@ -68,6 +68,12 @@
 
     }
 
+    #cover {
+      background: url(../img/bg.png);
+      background-position: center;
+      z-index: 12;
+    }
+
     #main {
       background: url(../img/i1.png) 50% 0 no-repeat fixed;
       background-size: cover;
@@ -290,7 +296,7 @@
     }
 
     #f3 {
-      background-image: url(../img/무선충전.jpg);
+      background-image: url(../img/a11.jpg);
       top: 50%;
       left: 0;
     }
@@ -306,7 +312,7 @@
     }
 
     #f4 {
-      background-image: url(../img/방수.jpg);
+      background-image: url(../img/camera.jpg);
       top: 50%;
       left: 50%;
     }
@@ -326,7 +332,7 @@
       top: 50%;
       left: 50%;
       margin-left: -90px;
-      margin-top: -100px;
+      margin-top: -50px;
       z-index: 10;
     }
 
@@ -337,8 +343,18 @@
     }
 
     .modalImg {
-      width: 380px;
-      height: 650px;
+      width: 650px;
+      height: 600px;
+      border-radius: 5px;
+    }
+
+    .cont {
+      position: absolute;
+      top: 0;
+      left: 57%;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 180%;
     }
 
     .mask {
@@ -360,23 +376,15 @@
 
     .modalLayer .modalContent {
       width: 1200px;
-      height: 650px;
+      height: 680px;
       padding: 20px;
-      border: 1px solid #ccc;
+      border: 1px solid white;
+      border-radius: 10px;
       position: fixed;
       left: 50%;
       top: 50%;
       z-index: 11;
-      background: gray;
-      /* background: url(../img/bg.png); */
-      /* background-position: center; */
-    }
-
-    #cover {
-      
-      background: url(../img/bg.png);
-      background-position: center;
-      z-index: 12;
+      background: white;
     }
 
     .modalLayer .modalContent button {
@@ -389,19 +397,80 @@
 
     #hold {
       position: absolute;
-      top: 40%;
+      top: 45%;
       right: 5%;
       background-color: black;
       border-radius: 5px;
       width: 10px;
       height: 50px;
-
     }
 
     #footer {
       width: 100%;
       height: 100px;
-      background-color: #9f9f9f;
+      background-color: white;
+      position: relative;
+    }
+
+    .ft {
+      font-weight: 350;
+      font-size: 40px;
+      margin-left: 10px;
+      text-decoration: none;
+      line-height: 100px;
+      color: black;
+    }
+
+    #ft_content {
+      position: absolute;
+      font-size: 20px;
+      left: 50%;
+      margin-left: -78px;
+      animation-duration: 3s;
+      animation-name: rainbowLink;
+      animation-iteration-count: infinite;
+    }
+
+    #ft_buy {
+      font-size: 10px;
+      width: 60px;
+      height: 30px;
+      top: 35px;
+      line-height: 35px;
+      text-align: center;
+      border: 1px solid blue;
+      border-radius: 5px;
+      color: white;
+      background-color: blue;
+      position: absolute;
+      right: 10px;
+    }
+
+    @keyframes rainbowLink {
+      0% {
+        color: #ff2a2a;
+      }
+      15% {
+        color: #ff7a2a;
+      }
+      30% {
+        color: #ffc52a
+      }
+      45% {
+        color: #43ff2a;
+      }
+      60% {
+        color: #2a89ff;
+      }
+      75% {
+        color: #202082;
+      }
+      90% {
+        color: #6b2aff;
+      }
+      100% {
+        color: #e82aff;
+      }
     }
   </style>
 
@@ -411,10 +480,17 @@
         width: $(window).width(),
         height: $(window).height()
       })
-      scaleBg();
-      $(window).scroll(function(){
 
-      });
+      $('#cover').on('click',function(){
+        scaleBg();
+      })
+      function scaleBg() {
+        $('#cover').effect("scale", {
+          mode: "hide"
+        }, 1500, function () {
+          $('#cover').remove();
+        });
+      }
 
       var modalLayer = $(".modalLayer");
       var modalLink = $(".modalLink");
@@ -432,7 +508,10 @@
           $('#m4').fadeIn("slow");
         }
 
-        modalCont.css({ "margin-top": -marginTop, "margin-left": -marginLeft });
+        modalCont.css({
+          "margin-top": -marginTop,
+          "margin-left": -marginLeft
+        });
         $(this).blur();
         $(".modalContent > a").focus();
         return false;
@@ -444,15 +523,11 @@
       });
 
 
-      function scaleBg() {
-        $('#cover').effect( "scale",{mode : "hide"},1500 ,function(){
-          $('#cover').remove();
-        });
-      }
+
 
       $('section[data-type="background"]').each(function (index) {
         var $bgobj = $(this);
-        console.log($bgobj);
+        
         if (index != 3) {
           $(window).scroll(function () {
             var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
@@ -467,7 +542,7 @@
       });
       var $video = $('#faceid').get(0);
       $('#faceid').on('click', function () {
-        
+
         $video.play();
         $video.onended = function () {
           // $('.f').css('display','block');
@@ -628,7 +703,7 @@
     </div>
   </div>
   <section id="main" data-type="background" data-speed="10" class="pages">
-      <div id="cover"></div>
+    <div id="cover"></div>
   </section>
   <section id="Design" data-type="background" data-speed="10" class="pages">
     <article>
@@ -749,9 +824,19 @@
 
     <div class="modalLayer" id="m1">
       <div class="modalContent">
-        
+
         <div id="oled">
           <img class="modalImg" src="../img/oled1.jpg">
+        </div>
+        <div class="cont">
+          <h1>iPhone X을 위해 설계된 OLED</h1>
+          <br>
+          <br>
+          <p>최초로 iPhone의 기준을 충족할 만큼
+            <br> 품질이 크게 향상된 OLED 스크린입니다.
+            <br> 정확하면서도 매혹적인 색상,
+            <br> 진정한 블랙, 높은 밝기, 그리고
+            <br> 1,000,000:1 명암비를 자랑합니다.</p>
         </div>
         <button type="button" class="exit">
           <img class="arrow-img" src="../img/icon.png">
@@ -760,7 +845,21 @@
     </div>
     <div class="modalLayer" id="m2">
       <div class="modalContent">
+        <div id="fid">
+          <img class="modalImg" src="../img/fid.jpg">
+        </div>
+        <div class="cont">
+          <h3>Face ID</h3>
+          <h1>인식 기술의 새 얼굴.</h1>
 
+          <p>당신만의 얼굴이 당신만의 암호가 됩니다.
+            <br> Face ID는 안전하게 잠금을 해제하고,
+            <br> 사용자 인증도 할 수 있는 새로운 방법입니다.</p>
+          <p>Face ID는 TrueDepth 카메라에 적용된 기술로 구현되며 설정 또한 간편합니다.
+            <br> 얼굴에 30,000개 이상의 보이지 않는 도트를
+            <br> 투사하고 분석하여 얼굴에 대한
+            <br> 정밀한 심도 맵을 만들죠.</p>
+        </div>
         <button type="button" class="exit">
           <img class="arrow-img" src="../img/icon.png">
         </button>
@@ -768,7 +867,21 @@
     </div>
     <div class="modalLayer" id="m3">
       <div class="modalContent">
-
+        <div id="a11">
+          <img class="modalImg" src="../img/a11_2.jpg">
+        </div>
+        <div class="cont">
+          <h3>A11 Bionic</h3>
+          <h1>초인적 지능.</h1>
+          <p>새롭게 선보이는 A11 Bionic. 스마트폰 사상 가장 강력하고
+            <br> 스마트한 칩으로, 초당 최대 6천억 번의 연산을
+            <br> 수행할 수 있는 뉴럴 엔진을 탑재하고 있습니다.</p>
+          <p>2세대 성능 컨트롤러와 맞춤형 배터리 디자인으로,
+            <br> 다음 충전 시까지 iPhone 7 대비 최대 2시간이나
+            <br> 더 오래 사용할 수 있습니다.</p>
+          <p>Apple이 만든 새로운 3코어 GPU는
+            <br> A10 Fusion보다 최대 30% 더 빠릅니다.</p>
+        </div>
         <button type="button" class="exit">
           <img class="arrow-img" src="../img/icon.png">
         </button>
@@ -776,7 +889,22 @@
     </div>
     <div class="modalLayer" id="m4">
       <div class="modalContent">
-
+        <div id="a11">
+          <img class="modalImg" src="../img/DSC08517.jpg">
+        </div>
+        <div class="cont">
+          <h3>듀얼 12MP 카메라</h3>
+          <h1>사진의 미학.
+            <br>더욱 손쉽게.</h1>
+          <p>더 커지고 빨라진 1200만 화소 센서. 새로운 색상 필터.
+            <br> 더 깊은 색감의 화소. 그리고 OIS 기능의
+            <br> 새로운 망원 카메라까지 갖췄습니다.</p>
+          <p>심도 센싱 카메라와 정밀한 얼굴 매핑으로
+            <br> 매력적인 스튜디오급 조명 효과를 연출할 수 있습니다.</p>
+          <p>iPhone X의 와이드 앵글 및 망원 카메라 덕분에
+            <br> 광학 줌은 물론 사진은 최대 10배, 동영상은 최대 6배까지의
+            <br> 디지털 줌이 가능합니다.</p>
+        </div>
         <button type="button" class="exit">
           <img class="arrow-img" src="../img/icon.png">
         </button>
@@ -786,7 +914,9 @@
   </section>
 
   <footer id="footer">
-
+    <a href="#" class="ft" id="ft_logo">IPhone X</a>
+    <a href="#" class="ft" id="ft_content">Create by LeeCJ</a>
+    <a href="https://www.apple.com/kr/shop/buy-iphone/iphone-x" class="ft" id="ft_buy">구입하기</a>
   </footer>
 
 </body>
