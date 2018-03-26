@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>아이폰X</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
+  <style>
+    body {
+      width: 100%;
+      margin: 0;
+    }
+    
+    /* 탑 네비게이션 메뉴 */
+    .nav {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      margin-bottom: 100px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav ul {
+      margin-top: 0;
+      overflow: hidden;
+    }
+
+    .nav li {
+      list-style: none;
+      width: 125px;
+      float: left;
+    }
+
+    .nav a {
+      display: block;
+      height: 50px;
+      text-align: center;
+      text-decoration: none;
+      line-height: 50px;
+      color: white;
+    }
+
+    .logo {
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    .is_fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    /* 탑 네비게이션 메뉴 끝 */
+
+    /* 페럴렉스 기본 섹션 */
+    section {
+      min-height: 1000px;
+      height: 100%;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1920px;
+      position: relative;
+    }
+    
+    /* 메인 섹션 */
+    #cover {
+      background: url(../img/bg.png);
+      background-position: center;
+      z-index: 12;
+    }
+
+    #main {
+      background: url(../img/i1.png) 50% 0 no-repeat fixed;
+      background-size: cover;
+    }
+    
+    /* 디자인 섹션 */
+    #Design {
+      background: white 50% 0 no-repeat fixed;
+    }
+
+    #Design article {
+      height: 100%;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+
+    #des_menu {
+      position: relative;
+    }
+
+    #des_left {
+      position: absolute;
+      top: 50%;
+      left: 30px;
+    }
+
+    #des_right {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+    }
+
+    #des_main {
+      width: 90%;
+      height: 100%;
+      margin: 0 20px;
+    }
+
+    .des_main {
+      height: 780px;
+    }
+
+    button {
+      background-image: none;
+      border: 0px;
+      background: rgba(0, 0, 0, 0);
+      outline-style: none;
+    }
+
+    .des-main-img {
+      width: 80%;
+      height: 700px;
+    }
+
+    .des-main-txt {
+      font-weight: 300;
+      width: 70%;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 160%;
+    }
+
+    .arrow-img {
+      width: 40px;
+      height: 40px;
+    }
+
+    #des_btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #des_btn ul {
+      display: inline-block;
+    }
+
+    #des_btn li {
+      display: inline-block;
+      float: left;
+      width: 4px;
+      height: 4px;
+      margin: 0 10px;
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 100%;
+      background-color: #9b9b9b;
+    }
+
+    #des_btn li:first-child {
+      background-color: black;
+    }
+
+    /* UX 섹션 */
+    #ux {
+      background: #fafafa 50% 0 no-repeat fixed;
+    }
+
+    #ux article {
+      height: 100%;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+
+    #ux article h1 {
+      margin-top: 80px;
+      font-size: 50px;
+      font-weight: 100;
+    }
+
+    #ux_main {
+      position: relative;
+    }
+
+    #ux_main #contents {
+      position: absolute;
+      top: 25%;
+      left: 20%;
+      text-align: left !important;
+      line-height: 180%;
+    }
+
+    #ux_btn {
+      text-align: center;
+    }
+
+    #ux_btn ul {
+      display: inline-block;
+    }
+
+    #ux_btn ul li {
+      float: left;
+      width: 100px;
+      height: 30px;
+      list-style: none;
+      border-bottom: 1px solid gray;
+      color: gray;
+    }
+
+    #ux_btn ul li:hover {
+      color: blue;
+    }
+
+    #ux_btn a {
+      text-decoration: none;
+      height: 100%;
+    }
+
+    .clickedA {
+      transition: all 1s ease .1s;
+      padding-bottom: 8px;
+      border-bottom: 2px solid black;
+      color: black;
+    }
+    
+    /* 특징 섹션 */
+    #feature {
+      background: url(../img/iPhone.jpg) 50% 0 no-repeat fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    #feature article {
+      width: 600px;
+      height: 600px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -300px;
+      margin-top: -300px;
+      border-radius: 10px;
+
+    }
+
+    .f {
+      position: absolute;
+      background-size: 300px 300px;
+      width: 300px;
+      height: 300px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    #f1 {
+      background-image: url(../img/oled.jpg);
+      top: 0;
+      left: 0;
+    }
+
+    #f1:hover {
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
+
+    #f2 {
+      background-image: url(../img/페이스아이디.jpg);
+      top: 0;
+      left: 50%;
+    }
+
+    #f2:hover {
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
+
+    #f3 {
+      background-image: url(../img/a11.jpg);
+      top: 50%;
+      left: 0;
+    }
+
+    #f3:hover {
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
+
+    #f4 {
+      background-image: url(../img/camera.jpg);
+      top: 50%;
+      left: 50%;
+    }
+
+    #f4:hover {
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      z-index: 10;
+      background-size: 600px 600px;
+      transition: all 1s ease .1s;
+    }
+
+    #video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -90px;
+      margin-top: -50px;
+      z-index: 10;
+    }
+
+    #faceid {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    .modalImg {
+      width: 650px;
+      height: 600px;
+      border-radius: 5px;
+    }
+
+    .cont {
+      position: absolute;
+      top: 0;
+      left: 57%;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 180%;
+    }
+
+    .mask {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      background: #000;
+      opacity: .5;
+      filter: alpha(opacity=50);
+    }
+
+    .modalLayer {
+      display: none;
+      position: relative;
+    }
+
+    .modalLayer .modalContent {
+      width: 1200px;
+      height: 680px;
+      padding: 20px;
+      border: 1px solid white;
+      border-radius: 10px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 11;
+      background: white;
+    }
+
+    .modalLayer .modalContent button {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      cursor: pointer;
+      margin-left: -26px;
+    }
+
+    #hold {
+      position: absolute;
+      top: 45%;
+      right: 5%;
+      background-color: black;
+      border-radius: 5px;
+      width: 10px;
+      height: 50px;
+    }
+    
+    /* 푸터 */
+    #footer {
+      width: 100%;
+      height: 100px;
+      background-color: white;
+      position: relative;
+    }
+
+    .ft {
+      font-weight: 350;
+      font-size: 40px;
+      margin-left: 10px;
+      text-decoration: none;
+      line-height: 100px;
+      color: black;
+    }
+
+    #ft_content {
+      position: absolute;
+      font-size: 20px;
+      left: 50%;
+      margin-left: -78px;
+      animation-duration: 3s;
+      animation-name: rainbowLink;
+      animation-iteration-count: infinite;
+    }
+
+    #ft_buy {
+      font-size: 10px;
+      width: 60px;
+      height: 30px;
+      top: 35px;
+      line-height: 35px;
+      text-align: center;
+      border: 1px solid blue;
+      border-radius: 5px;
+      color: white;
+      background-color: blue;
+      position: absolute;
+      right: 10px;
+    }
+
+    @keyframes rainbowLink {
+      0% {
+        color: #ff2a2a;
+      }
+      15% {
+        color: #ff7a2a;
+      }
+      30% {
+        color: #ffc52a
+      }
+      45% {
+        color: #43ff2a;
+      }
+      60% {
+        color: #2a89ff;
+      }
+      75% {
+        color: #202082;
+      }
+      90% {
+        color: #6b2aff;
+      }
+      100% {
+        color: #e82aff;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //페럴렉스 효과
+      $('section[data-type="background"]').each(function (index) {
+        var $bgobj = $(this);
+        if (index != 3) {
+          $(window).scroll(function () {
+            var yPos = -($(window).scrollTop() / $bgobj.data('speed'));
+            var coords = '50% ' + (yPos) + 'px';
+            $bgobj.css({
+              backgroundPosition: coords
+            });
+          });
+        }
+      });
+
+      // 메인페이지 X
+      $('#cover').css({
+        width: $(window).width(),
+        height: $(window).height()
+      })
+      $('#cover').on('click', function () {
+        scaleBg();
+      })
+
+      //상단 네비게이션 메뉴 
+      var nav = $('.nav');
+      var lastScroll = 50;
+      $(window).scroll(function () {
+        var windowTop = $(this).scrollTop();
+        if (windowTop > lastScroll) {
+          nav.removeClass('is_fixed');
+        } else {
+          nav.addClass('is_fixed');
+        }
+        lastScroll = windowTop;
+      });
+
+      //디자인 섹션 default 이외의 본문 가리기
+      $('.des_main').each(function (index) {
+        if (index != 0) {
+          $(this).css('display', 'none');
+        }
+      });
+
+      //디자인 섹션 왼쪽 오른쪽 버튼 이벤트
+      $('button').on('click', function () {
+        if (this.id == 'left') {
+          leftMove();
+        } else if (this.id == 'right') {
+          rightMove();
+        }
+      });
+
+      //디자인 섹션 동글뱅이 섹션 선택
+      $('#des_btn li').on('click', function () {
+        move($(this).index());
+      })
+
+      //ux 섹션 비디오 default 이외 가리기
+      $('.ux_video').each(function (index) {
+        if (index != 0) {
+          $(this).css('display', 'none');
+        }
+      });
+
+      //ux 섹션 메뉴 컨트롤
+      $('#ux_btn li').on('click', function () {
+        changeVideo($(this).index());
+      });
+
+      //특징 섹션 모달창 
+      var modalLayer = $(".modalLayer");
+      var modalLink = $(".modalLink");
+      var modalCont = $(".modalContent");
+      var marginLeft = modalCont.outerWidth() / 2;
+      var marginTop = modalCont.outerHeight() / 2;
+      modalLink.click(function () {
+        if ($(this).index() == 0) {
+          $('#m1').fadeIn("slow");
+        } else if ($(this).index() == 1) {
+          $('#m2').fadeIn("slow");
+        } else if ($(this).index() == 2) {
+          $('#m3').fadeIn("slow");
+        } else if ($(this).index() == 3) {
+          $('#m4').fadeIn("slow");
+        }
+        modalCont.css({
+          "margin-top": -marginTop,
+          "margin-left": -marginLeft
+        });
+        $(this).blur();
+        $(".modalContent > a").focus();
+        return false;
+      });
+      $(".modalContent > button").click(function () {
+        modalLayer.fadeOut("slow");
+        modalLink.focus();
+      });
+
+      //특징 섹션 페이스아이디 효과 컨트롤
+      var $video = $('#faceid').get(0);
+      $('#faceid').on('click', function () {
+        $video.play();
+        $video.onended = function () {
+          $('#video').fadeOut();
+          $('.f').fadeIn();
+        };
+      });
+
+      //특징 섹션 홀드 버튼
+      $('#hold').on('click', function () {
+        modalLayer.fadeOut("slow");
+        modalLink.focus();
+        $('#video').fadeIn();
+        $('.f').fadeOut();
+        $video.load();
+      });
+    });
+    
+    //메인X 스케일 조정 -> jQuery UI
+    function scaleBg() {
+      $('#cover').effect("scale", {
+        mode: "hide"
+      }, 1500, function () {
+        $('#cover').remove();
+      });
+    }
+    
+    //ux 섹션 비디오 컨트롤 
+    function changeVideo(num) {
+      $('.ux_video').each(function () {
+        if ($(this).index() == num) {
+          $(this).css('display', 'block');
+        } else {
+          $(this).css('display', 'none');
+        }
+      });
+      $('#ux_btn li').each(function () {
+        if ($(this).index() == num) {
+          $(this).children('a').addClass('clickedA');
+        } else {
+          $(this).children('a').removeClass();
+        }
+      });
+    }
+    
+    //디자인 섹션 본문 이동
+    function move(idx) {
+      $('.des_main').each(function (index) {
+        if ($(this).css('display') == 'block') {
+          $(this).fadeOut("slow", function () {
+            $(this).css('display', 'none');
+            $('.des_main').eq(idx).fadeIn('slow', function () {
+              $('.des_main').eq(idx).css('display', 'block');
+            });
+            liControl(idx);
+          });
+        }
+      });
+    }
+    
+    //디자인 섹션 왼쪽 본문 이동
+    function leftMove() {
+      var nextIndex = 0;
+      $('.des_main').each(function (index) {
+        if ($(this).css('display') == 'block') {
+          $(this).fadeOut("slow", function () {
+            $(this).css('display', 'none');
+            nextIndex = index == 0 ? 2 : index -= 1;
+            $('.des_main').eq(nextIndex).fadeIn('slow', function () {
+              $('.des_main').eq(nextIndex).css('display', 'block');
+            });
+            liControl(nextIndex);
+          });
+        }
+      });
+    }
+    
+    //디자인 섹션 오른쪽 본문 이동
+    function rightMove() {
+      var nextIndex = 0;
+      $('.des_main').each(function (index) {
+        if ($(this).css('display') == 'block') {
+          $(this).fadeOut("slow", function () {
+            $(this).css('display', 'none');
+            nextIndex = index == 2 ? 0 : index += 1;
+            $('.des_main').eq(nextIndex).fadeIn('slow', function () {
+              $('.des_main').eq(nextIndex).css('display', 'block');
+            });
+            liControl(nextIndex);
+          });
+        }
+      });
+    }
+    
+    //디자인 섹션 동글뱅이 컨트롤
+    function liControl(nextIndex) {
+      var $liList1 = $('#des_btn li');
+      $liList1.eq(nextIndex).css('background-color', 'black');
+      $liList1.filter(function (index) {
+        return index != nextIndex;
+      }).css('background-color', '#9b9b9b');
+    }
+  </script>
+</head>
+
+<body>
+  <!-- 탑 네비게이션 메뉴 -->
+  <div id="wrap">
+    <div class="nav">
+      <ul>
+        <li>
+          <a href="#main" class="logo">X</a>
+        </li>
+        <li>
+          <a href="#Design" class="menu-font">Design</a>
+        </li>
+        <li>
+          <a href="#ux" class="menu-font">UX</a>
+        </li>
+        <li>
+          <a href="#feature" class="menu-font">Feature</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 메인 섹션 -->
+  <section id="main" data-type="background" data-speed="10" class="pages">
+    <div id="cover"></div>
+  </section>
+  <!-- 디자인 섹션 -->
+  <section id="Design" data-type="background" data-speed="10" class="pages">
+    <article>
+      <div id="des_menu">
+        <div id="des_left">
+          <button id="left">
+            <img class="arrow-img" src="../img/left-arrow.png">
+          </button>
+        </div>
+        <div id="des_main1" class="des_main">
+          <img class="des-main-img" src="../img/i2_1.jpg">
+          <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까?
+            <br> 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다.
+            <br> 그리고 이제 iPhone X에 이르러 그것은 현실이 되었습니다.</p>
+        </div>
+        <div id="des_main2" class="des_main">
+          <video class="des-main-img" autoplay loop>
+            <source src="https://images.apple.com/media/us/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/primary/design_corners/large.mp4">
+          </video>
+          <p class="des-main-txt">새로운 공법과 기술이 적용된 디스플레이는 우아하게 처리된 둥근 모서리 구석에 이르기까지 전체 디자인의 곡선을 정확하게 따라갑니다.</p>
+        </div>
+        <div id="des_main3" class="des_main">
+          <img class="des-main-img" src="../img/i2_2.jpg">
+          <p class="des-main-txt">사용 경험을 방해하는 그 무엇도 없이 매끈하게 펼쳐진 기기의 앞면을 만들기 위해, 우리는 홈 버튼을 없앴습니다.
+            <br> 그리고 그 역할을 대신할, 새로우면서도 익숙한 방식을 도입했습니다.</p>
+        </div>
+        <div id="des_right">
+          <button id="right">
+            <img class="arrow-img" src="../img/right-arrow.png">
+          </button>
+        </div>
+      </div>
+      <div id="des_btn">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </article>
+  </section>
+  <!-- UX 섹션 -->
+  <section id="ux" data-type="background" data-speed="10" class="pages">
+    <article>
+      <h1>직관적인 제스처로 더욱 쉬워진 사용성.</h1>
+      <div id="ux_main">
+        <div id="ux_video1" class="ux_video">
+          <div id="contents">
+            <p>
+              아래에서 위로 스와이프 한 번이면<br>
+              홈 화면으로 이동합니다.
+            </p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_home/large.mp4">
+          </video>
+        </div>
+        <div id="ux_video2" class="ux_video">
+          <div id="contents">
+            <p>
+              위로 스와이프한 후 잠깐 멈추면<br>
+              열려 있는 모든 앱이 나타납니다.
+            </p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_multitask/large.mp4">
+          </video>
+        </div>
+        <div id="ux_video3" class="ux_video">
+          <div id="contents">
+            <p>
+              아래로 스와이프하면 제어 센터가 바로
+              <br>열립니다. 제어 센터는 자신에 맞게
+              <br>커스터마이즈 할 수도 있죠.
+            </p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_control_center/large.mp4">
+          </video>
+        </div>
+        <div id="ux_video4" class="ux_video">
+          <div id="contents">
+            <p>
+              묻고 싶은 게 있을 때 측면 버튼을 길게<br>
+              눌러 Siri를 불러낼 수 있습니다.
+            </p>
+          </div>
+          <video class="ux-main-video" autoplay loop>
+            <source src="https://images.apple.com/media/kr/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/overview/modal/design_gestures_siri/large.mp4">
+          </video>
+        </div>
+      </div>
+      <div id="ux_btn">
+        <ul>
+          <li>
+            <a class="clickedA">홈</a>
+          </li>
+          <li>
+            <a>멀티태스킹</a>
+          </li>
+          <li>
+            <a>제어센터</a>
+          </li>
+          <li>
+            <a>Siri</a>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </section>
+  <!-- 특징 섹션 -->
+  <section id="feature" data-type="background" data-speed="10" class="pages">
+    <!-- 페이스 아이디 -->
+    <div id="video">
+      <video id="faceid">
+        <source src="../img/faceid.mov">
+      </video>
+    </div>
+    <!-- 잠금해제 메인 -->
+    <article>
+      <div id="f1" class="f modalLink"></div>
+      <div id="f2" class="f modalLink"></div>
+      <div id="f3" class="f modalLink"></div>
+      <div id="f4" class="f modalLink"></div>
+    </article>
+    <!-- 모달 섹션 -->
+    <div class="modalLayer" id="m1">
+      <div class="modalContent">
+        <div id="oled">
+          <img class="modalImg" src="../img/oled1.jpg">
+        </div>
+        <div class="cont">
+          <h1>iPhone X을 위해 설계된 OLED</h1>
+          <br>
+          <br>
+          <p>
+            최초로 iPhone의 기준을 충족할 만큼
+            <br> 품질이 크게 향상된 OLED 스크린입니다.
+            <br> 정확하면서도 매혹적인 색상,
+            <br> 진정한 블랙, 높은 밝기, 그리고
+            <br> 1,000,000:1 명암비를 자랑합니다.
+          </p>
+        </div>
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div class="modalLayer" id="m2">
+      <div class="modalContent">
+        <div id="fid">
+          <img class="modalImg" src="../img/fid.jpg">
+        </div>
+        <div class="cont">
+          <h3>Face ID</h3>
+          <h1>인식 기술의 새 얼굴.</h1>
+          <p>
+            당신만의 얼굴이 당신만의 암호가 됩니다.
+            <br> Face ID는 안전하게 잠금을 해제하고,
+            <br> 사용자 인증도 할 수 있는 새로운 방법입니다.
+          </p>
+          <p>
+            Face ID는 TrueDepth 카메라에 적용된 기술로 구현되며 설정 또한 간편합니다.
+            <br> 얼굴에 30,000개 이상의 보이지 않는 도트를
+            <br> 투사하고 분석하여 얼굴에 대한
+            <br> 정밀한 심도 맵을 만들죠.
+          </p>
+        </div>
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div class="modalLayer" id="m3">
+      <div class="modalContent">
+        <div id="a11">
+          <img class="modalImg" src="../img/a11_2.jpg">
+        </div>
+        <div class="cont">
+          <h3>A11 Bionic</h3>
+          <h1>초인적 지능.</h1>
+          <p>
+            새롭게 선보이는 A11 Bionic. 스마트폰 사상 가장 강력하고<br>
+            스마트한 칩으로, 초당 최대 6천억 번의 연산을<br>
+            수행할 수 있는 뉴럴 엔진을 탑재하고 있습니다.
+          </p>
+          <p>
+            2세대 성능 컨트롤러와 맞춤형 배터리 디자인으로,<br>
+            다음 충전 시까지 iPhone 7 대비 최대 2시간이나<br>
+            더 오래 사용할 수 있습니다.
+          </p>
+          <p>
+            Apple이 만든 새로운 3코어 GPU는<br>
+            A10 Fusion보다 최대 30% 더 빠릅니다.
+          </p>
+        </div>
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div class="modalLayer" id="m4">
+      <div class="modalContent">
+        <div id="a11">
+          <img class="modalImg" src="../img/DSC08517.jpg">
+        </div>
+        <div class="cont">
+          <h3>듀얼 12MP 카메라</h3>
+          <h1>
+            사진의 미학.<br>
+            더욱 손쉽게.
+          </h1>
+          <p>
+            더 커지고 빨라진 1200만 화소 센서. 새로운 색상 필터.<br>
+            더 깊은 색감의 화소. 그리고 OIS 기능의<br>
+            새로운 망원 카메라까지 갖췄습니다.
+          </p>
+          <p>
+            심도 센싱 카메라와 정밀한 얼굴 매핑으로<br>
+            매력적인 스튜디오급 조명 효과를 연출할 수 있습니다.
+          </p>
+          <p>
+            iPhone X의 와이드 앵글 및 망원 카메라 덕분에<br>
+            광학 줌은 물론 사진은 최대 10배, 동영상은 최대 6배까지의<br>
+            디지털 줌이 가능합니다.
+          </p>
+        </div>
+        <button type="button" class="exit">
+          <img class="arrow-img" src="../img/icon.png">
+        </button>
+      </div>
+    </div>
+    <div id="hold"></div>
+  </section>
+  <!-- 푸터 -->
+  <footer id="footer">
+    <a href="#" class="ft" id="ft_logo">IPhone X</a>
+    <a href="#" class="ft" id="ft_content">Create by LeeCJ</a>
+    <a href="https://www.apple.com/kr/shop/buy-iphone/iphone-x" class="ft" id="ft_buy">구입하기</a>
+  </footer>
+
+</body>
+
+</html>

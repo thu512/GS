@@ -71,13 +71,13 @@
     
     /* 메인 섹션 */
     #cover {
-      background: url(../img/bg.png);
+      background: url(./img/bg.png);
       background-position: center;
       z-index: 12;
     }
 
     #main {
-      background: url(../img/i1.png) 50% 0 no-repeat fixed;
+      background: url(./img/i1.png) 50% 0 no-repeat fixed;
       background-size: cover;
     }
     
@@ -233,7 +233,7 @@
     
     /* 특징 섹션 */
     #feature {
-      background: url(../img/iPhone.jpg) 50% 0 no-repeat fixed;
+      background: url(./img/iPhone.jpg) 50% 0 no-repeat fixed;
       background-size: cover;
       position: relative;
     }
@@ -260,7 +260,7 @@
     }
 
     #f1 {
-      background-image: url(../img/oled.jpg);
+      background-image: url(./img/oled.jpg);
       top: 0;
       left: 0;
     }
@@ -274,7 +274,7 @@
     }
 
     #f2 {
-      background-image: url(../img/페이스아이디.jpg);
+      background-image: url(./img/페이스아이디.jpg);
       top: 0;
       left: 50%;
     }
@@ -290,7 +290,7 @@
     }
 
     #f3 {
-      background-image: url(../img/a11.jpg);
+      background-image: url(./img/a11.jpg);
       top: 50%;
       left: 0;
     }
@@ -306,7 +306,7 @@
     }
 
     #f4 {
-      background-image: url(../img/camera.jpg);
+      background-image: url(./img/camera.jpg);
       top: 50%;
       left: 50%;
     }
@@ -537,7 +537,6 @@
 
       //ux 섹션 메뉴 컨트롤
       $('#ux_btn li').on('click', function () {
-        console.log($(this));
         changeVideo($(this).index());
       });
 
@@ -707,11 +706,11 @@
       <div id="des_menu">
         <div id="des_left">
           <button id="left">
-            <img class="arrow-img" src="../img/left-arrow.png">
+            <img class="arrow-img" src="./img/left-arrow.png">
           </button>
         </div>
         <div id="des_main1" class="des_main">
-          <img class="des-main-img" src="../img/i2_1.jpg">
+          <img class="des-main-img" src="./img/i2_1.jpg">
           <p class="des-main-txt">어떻게 하면 외장과 디스플레이가 아무 방해 요소 없이 하나로 합쳐진 고도의 지능형 기기를 만들 수 있을까?
             <br> 이는 우리가 첫 번째 iPhone과 함께 세운 목표였습니다.
             <br> 그리고 이제 iPhone X에 이르러 그것은 현실이 되었습니다.</p>
@@ -723,13 +722,13 @@
           <p class="des-main-txt">새로운 공법과 기술이 적용된 디스플레이는 우아하게 처리된 둥근 모서리 구석에 이르기까지 전체 디자인의 곡선을 정확하게 따라갑니다.</p>
         </div>
         <div id="des_main3" class="des_main">
-          <img class="des-main-img" src="../img/i2_2.jpg">
+          <img class="des-main-img" src="./img/i2_2.jpg">
           <p class="des-main-txt">사용 경험을 방해하는 그 무엇도 없이 매끈하게 펼쳐진 기기의 앞면을 만들기 위해, 우리는 홈 버튼을 없앴습니다.
             <br> 그리고 그 역할을 대신할, 새로우면서도 익숙한 방식을 도입했습니다.</p>
         </div>
         <div id="des_right">
           <button id="right">
-            <img class="arrow-img" src="../img/right-arrow.png">
+            <img class="arrow-img" src="./img/right-arrow.png">
           </button>
         </div>
       </div>
@@ -816,7 +815,7 @@
     <!-- 페이스 아이디 -->
     <div id="video">
       <video id="faceid">
-        <source src="../img/faceid.mov">
+        <source src="./img/faceid.mov">
       </video>
     </div>
     <!-- 잠금해제 메인 -->
@@ -830,7 +829,7 @@
     <div class="modalLayer" id="m1">
       <div class="modalContent">
         <div id="oled">
-          <img class="modalImg" src="../img/oled1.jpg">
+          <img class="modalImg" src="./img/oled1.jpg">
         </div>
         <div class="cont">
           <h1>iPhone X을 위해 설계된 OLED</h1>
@@ -845,14 +844,14 @@
           </p>
         </div>
         <button type="button" class="exit">
-          <img class="arrow-img" src="../img/icon.png">
+          <img class="arrow-img" src="./img/icon.png">
         </button>
       </div>
     </div>
     <div class="modalLayer" id="m2">
       <div class="modalContent">
         <div id="fid">
-          <img class="modalImg" src="../img/fid.jpg">
+          <img class="modalImg" src="./img/fid.jpg">
         </div>
         <div class="cont">
           <h3>Face ID</h3>
@@ -870,14 +869,14 @@
           </p>
         </div>
         <button type="button" class="exit">
-          <img class="arrow-img" src="../img/icon.png">
+          <img class="arrow-img" src="./img/icon.png">
         </button>
       </div>
     </div>
     <div class="modalLayer" id="m3">
       <div class="modalContent">
         <div id="a11">
-          <img class="modalImg" src="../img/a11_2.jpg">
+          <img class="modalImg" src="./img/a11_2.jpg">
         </div>
         <div class="cont">
           <h3>A11 Bionic</h3>
@@ -898,14 +897,14 @@
           </p>
         </div>
         <button type="button" class="exit">
-          <img class="arrow-img" src="../img/icon.png">
+          <img class="arrow-img" src="./img/icon.png">
         </button>
       </div>
     </div>
     <div class="modalLayer" id="m4">
       <div class="modalContent">
         <div id="a11">
-          <img class="modalImg" src="../img/DSC08517.jpg">
+          <img class="modalImg" src="./img/DSC08517.jpg">
         </div>
         <div class="cont">
           <h3>듀얼 12MP 카메라</h3>
@@ -929,7 +928,7 @@
           </p>
         </div>
         <button type="button" class="exit">
-          <img class="arrow-img" src="../img/icon.png">
+          <img class="arrow-img" src="./img/icon.png">
         </button>
       </div>
     </div>
