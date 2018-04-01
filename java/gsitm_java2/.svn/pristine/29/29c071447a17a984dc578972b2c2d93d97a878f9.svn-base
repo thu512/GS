@@ -1,0 +1,104 @@
+package com.gsitm.java.ex04;
+
+import java.util.Scanner;
+
+/** 
+* @과목명			: GS ITM 인턴사원 자바교육 <br>
+* @FileName		: ScannerMoney_1054.java <br>
+* @Project		: gsitm_java2 <br>
+* @Date			: 2018. 3. 28. <br>
+* @작성자			: 이경민 <br>
+* @프로그램 설명	: 동전분할기
+*/
+public class ScannerMoney_1054 {
+
+	public static void main(String[] args) {
+
+		Scanner sc = null;
+
+		int[] moneyScale = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+		int[] moneyReturns = new int[moneyScale.length];
+
+		boolean coinDivisionerFlag = true;
+		
+		try {
+			
+			int temp;
+			int tempRemains;
+			int inputMoney;
+			
+			while(coinDivisionerFlag) {
+
+				System.out.println("동전 분할기에 오신것을 환영합니다! 금액을 입력하세요! >");
+
+				sc = new Scanner(System.in);
+
+				inputMoney = sc.nextInt();
+
+				temp = inputMoney;
+
+				for( int i = 0 ; i < moneyScale.length ; i++ ) {
+
+					if(  temp < moneyScale[i] ) {
+						continue;
+					}
+					else if( temp > 0 ) {
+						
+						moneyReturns[i] = getDivisionResult( temp,moneyScale[i] );
+						tempRemains = getDivisionRemain( temp, moneyScale[i] );
+						temp = tempRemains;
+						
+						if( moneyScale[i] >= 1000 ) {
+							System.out.println( moneyScale[i] + "원 짜리 " + moneyReturns[i]+"매 " );
+						}
+						else {
+							System.out.println( moneyScale[i] + "원 짜리 " + moneyReturns[i]+"개 " );
+						}
+						
+					}
+					else{
+						System.out.println( "\n 금액이 맞는지 확인하세요!! \n" );
+						coinDivisionerFlag = !coinDivisionerFlag;
+						break;
+					}
+					
+				}
+				
+				System.out.println("\n\n == 동전 분할기 종료! == \n\n");
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println("오류가 발생했습니다.");
+		}
+		finally {
+			sc.close();
+		}
+		
+	}
+
+
+	
+	/**
+	 * 값을 입력 받아 두 값의 나눠진 몫을 구함
+	 * @param targetValue 대상 값
+	 * @param divisionValue 나누는 값
+	 * @return 나눠진 값
+	 */
+	public static int getDivisionResult(int targetValue, int divisionValue) {
+		
+		return  (int)( targetValue / divisionValue ) ;
+	}
+
+	/**
+	 * 값을 입력 받아 두 값의 나머지를 구함
+	 * @param targetValue 대상 값
+	 * @param divisionValue 나머지를 찾을 단위
+	 * @return 나머지 값
+	 */
+	public static int getDivisionRemain(int targetValue, int divisionValue) {
+		
+		return (int)( targetValue % divisionValue ) ;
+	}
+	
+}

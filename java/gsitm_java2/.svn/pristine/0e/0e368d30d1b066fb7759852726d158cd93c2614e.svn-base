@@ -1,0 +1,40 @@
+package com.gsitm.java.ex04;
+
+import java.util.Scanner;
+
+/** 
+* @과목명                : GS ITM 인턴사원 자바교육
+* @FileName            : ScannerMoney_1038.java 
+* @Project             : gsitm_java2 
+* @Package             : com.gsitm.java.ex04
+* @Date                : 2018. 3. 28. 오후 4:04:08
+* @작성자                : it1038 Hyosang Kim
+* @프로그램 설명           : 키보드에서 정수로 된 돈의 액수를 입력받아 오만,만,천,오백,백,오십,십,일원 각각 몇개로 변환되는지 출력하라.
+*						 65370입력 > 오만원 1개, 만원 1개, 천원 5개, 100원 3개, 50원 1개, 1원 2개
+*/
+public class ScannerMoney_1038 {//
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int inputValue = scanner.nextInt();
+		printMoney(50000, inputValue);
+	}
+	public static void printMoney(int startMoney, int money) {
+		int moneyMount = 0;
+		do {
+			if(money >= startMoney) {
+				moneyMount = money / startMoney;
+				money = money % startMoney;
+				System.out.println(startMoney+"원 : "+moneyMount);
+			}
+			startMoney /= 5;
+			if(money >= startMoney) {
+				moneyMount = money / startMoney;
+				money = money % startMoney;
+				System.out.println(startMoney+"원 : "+moneyMount);
+			}
+			startMoney /= 2;
+		} while(money > 0);
+	}
+	
+}

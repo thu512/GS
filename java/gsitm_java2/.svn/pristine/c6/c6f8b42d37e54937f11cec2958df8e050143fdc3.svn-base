@@ -1,0 +1,10 @@
+package com.gsitm.java.ex06;
+
+public class Zookeeper {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

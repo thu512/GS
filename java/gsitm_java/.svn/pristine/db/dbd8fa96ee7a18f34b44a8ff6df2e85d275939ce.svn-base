@@ -1,0 +1,8 @@
+package com.gsitm.practice;
+
+public class hello_1071 {
+	public static void main(String[] args) {
+		System.out.println("Hello");
+	}
+
+}

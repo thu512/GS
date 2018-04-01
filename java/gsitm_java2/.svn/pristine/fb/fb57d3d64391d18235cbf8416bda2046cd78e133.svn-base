@@ -1,0 +1,6 @@
+package com.gsitm.java.ex06;
+
+public class Lian {
+	static boolean isFull;
+	
+}

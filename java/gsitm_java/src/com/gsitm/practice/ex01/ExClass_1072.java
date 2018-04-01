@@ -1,0 +1,31 @@
+package com.gsitm.practice.ex01;
+
+/** 
+ * @과목명			: GS ITM 인턴사원 자바교육
+ * @FileName		: ExClass_1072.java
+ * @Project			: gsitm_java
+ * @Date			: 2018. 3. 28.
+ * @작성자			: 차주현
+ * @프로그램 설명	:
+ */
+public class ExClass_1072 {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+//		여러 줄의 주석
+		
+		System.out.println("2_고양이_1");
+		System.out.println();
+		
+		Integer.parseInt("123");
+		System.out.println(new ExClass_1072().TestFunction(1234));
+		
+	}
+	public static final int TestFunction( ) {
+		return 12;
+	}
+	public int TestFunction(int var) {
+		return var;
+	}
+}

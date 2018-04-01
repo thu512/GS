@@ -10,6 +10,12 @@ public class ForSumFrom1To100Example {
 		
 		System.out.println("1~100 гу : " + sum);
 		*/
+		int[] num = new int[100];
+		for(int i : num) {
+			System.out.println(i);
+		}
+		
+		
 		
 		int sum = 0; 
 		

@@ -1,0 +1,7 @@
+package com.gsitm.practice.ex01;
+class ExClass_1060{
+	public static void main(String[] args) {
+		System.out.println("°í¾çÀÌ");
+		System.out.println();
+	}
+}
