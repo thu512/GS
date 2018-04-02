@@ -15,5 +15,8 @@ public class ArrayCreateByValueListExample1 {
 		System.out.println("ÃÑÇÕ : " + sum);		
 		double avg = (double) sum / 3;
 		System.out.println("Æò±Õ : " + avg);
+		
+		ArrayCreateByValueListExample2 ex2 = new ArrayCreateByValueListExample2();
+		
 	}
 }
