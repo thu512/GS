@@ -10,7 +10,7 @@ public class ExpressionParser {
 		Stack<Object> st = new Stack<Object>();
 		ArrayList<Object> arry = new ArrayList<Object>();
 		for(String s: infixExperssion) {
-			//else if는 잘못된 코드다. 유지보수 힘듬
+			//else if는 잘못된 코드다. 유지보수 힘듬 다른 대안 찾을 것
 			if(s.equals("+") || s.equals("*") || s.equals("-") || s.equals("/")) {
 				if(!st.isEmpty() && (s.equals("+") || s.equals("-")) && (st.peek().equals("*") || st.peek().equals("/"))) {
 					arry.add(st.pop());
