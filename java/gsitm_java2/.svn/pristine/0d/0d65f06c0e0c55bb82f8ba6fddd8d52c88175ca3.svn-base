@@ -1,0 +1,45 @@
+package com.gsitm.java.poi;
+
+import java.io.FileOutputStream;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+ 
+public class Poi {
+	static HSSFRow row;
+	static HSSFCell cell;
+
+	public static void main(String[] args){
+
+		HSSFWorkbook workbook = new HSSFWorkbook();
+		HSSFSheet sheet = workbook.createSheet("mySheet");
+
+		row = sheet.createRow(0);
+		row.createCell(0).setCellValue("DATA 11");
+		row.createCell(1).setCellValue("DATA 12");
+		row.createCell(2).setCellValue("DATA 13");
+		
+		row = sheet.createRow(1);
+		row.createCell(0).setCellValue("DATA 21");
+		row.createCell(1).setCellValue("DATA 22");
+		row.createCell(2).setCellValue("DATA 23");
+
+		row = sheet.createRow(2);
+		row.createCell(0).setCellValue("DATA 31");
+		row.createCell(1).setCellValue("DATA 32");
+		row.createCell(2).setCellValue("DATA 33");
+
+		FileOutputStream outFile;
+
+		try {
+			outFile = new FileOutputStream("C:\\aa\\xlsWrite.xls");
+			workbook.write(outFile);
+			outFile.close();			
+			
+			System.out.println("파일생성완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

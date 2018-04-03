@@ -1,0 +1,39 @@
+package com.gsitm.java.ex10;
+
+/** 
+* @과목명              : GS ITM 인턴사원 자바교육
+* @FileName            : Human_1060.java
+* @Project             : gsitm_java2 
+* @Date                : 2018. 4. 3. 
+* @작성자              : 이창주
+* @프로그램 설명       : 사람클래스, 신발/옷 인페이스 구현
+*/
+public class Human_1060 implements Shoes_1060, Clothes_1060{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Human_1060 h = new Human_1060();
+		h.tearClothes();
+		h.throwShoes();
+		h.putOnShoes();
+		Clothes_1060.toWearClothes();
+		
+		System.out.println(Shoes_1060.SIZE);
+		System.out.println(Clothes_1060.SIZE);
+		
+	}
+
+	@Override
+	public void tearClothes() {
+		// TODO Auto-generated method stub
+		System.out.println("옷을 찢다.");
+	}
+
+	@Override
+	public void throwShoes() {
+		// TODO Auto-generated method stub
+		System.out.println("신발을 던지다.");
+	}
+	
+	
+}
