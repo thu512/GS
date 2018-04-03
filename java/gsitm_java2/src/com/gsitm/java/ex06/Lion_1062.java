@@ -1,0 +1,13 @@
+package com.gsitm.java.ex06;
+
+/** 
+ * @과목명            : GS ITM 인턴사원 자바교육
+ * @FileName         : Lion_1062.java 
+ * @Project            : gsitm_java2 
+ * @Date            : 2018. 3. 30. 
+ * @작성자            : 장동주
+ * @프로그램 설명      : 사자는 밥을 먹었습니다.
+ */
+public class Lion_1062 {
+	static boolean isFeeded=true;
+}
