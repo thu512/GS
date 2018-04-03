@@ -1,12 +1,18 @@
 import java.io.FileOutputStream;
-
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
-
+/**
+ * @과목명           : GS ITM 인턴사원 자바교육
+ * @FileName        : Poi_1060.java
+ * @Project         : Poi
+ * @Date            : 2018. 4. 4.
+ * @작성자          : 이창주
+ * @프로그램 설명   : Poi라이브러리 과제
+ */
 public class Poi_1060 {
     static HSSFRow row;
     static HSSFCell cell;
