@@ -1,5 +1,6 @@
 public class Test {
     public static void main(String[] args){
-        System.out.println("sadsa");
+        Single s = Single.getInstance();
+        System.out.println(s.getName());
     }
 }
